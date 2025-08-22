@@ -82,7 +82,7 @@ bool TaxiAction::Execute(Event event)
 
         if (param == "?")
         {
-            botAI->TellMasterNoFacing("=== Taxi ===");
+            botAI->TellMasterNoFacing("=== 飞行点 ===");
 
             uint32 index = 1;
             for (uint32 node : nodes)

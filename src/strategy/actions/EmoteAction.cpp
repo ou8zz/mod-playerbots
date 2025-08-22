@@ -164,7 +164,7 @@ bool EmoteActionBase::ReceiveEmote(Player* source, uint32 emote, bool verbal)
             if (botAI->GetMaster() == source)
             {
                 botAI->ChangeStrategy("-follow,+stay", BOT_STATE_NON_COMBAT);
-                botAI->TellMasterNoFacing("Fine.. I'll stay right here..");
+                botAI->TellMasterNoFacing("好吧.. 我就在这里等着..");
             }
             break;
         case TEXT_EMOTE_BECKON:
@@ -172,7 +172,7 @@ bool EmoteActionBase::ReceiveEmote(Player* source, uint32 emote, bool verbal)
             if (botAI->GetMaster() == source)
             {
                 botAI->ChangeStrategy("+follow", BOT_STATE_NON_COMBAT);
-                botAI->TellMasterNoFacing("Wherever you go, I'll follow..");
+                botAI->TellMasterNoFacing("你去哪里, 我就跟哪里..");
             }
             break;
         case TEXT_EMOTE_WAVE:

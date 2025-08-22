@@ -1168,13 +1168,13 @@ bool MovementAction::Follow(Unit* target, float distance, float angle)
         if (bot->isDead() && botAI->GetMaster()->IsAlive())
         {
             bot->ResurrectPlayer(1.0f, false);
-            botAI->TellMasterNoFacing("I live, again!");
+            botAI->TellMasterNoFacing("我又活过来了!");
         }
         else
             botAI->TellError("I am stuck while following");
 
         bot->CombatStop(true);
-        botAI->TellMasterNoFacing("I will there soon.");
+        botAI->TellMasterNoFacing("我很快就到。");
         bot->TeleportTo(target->GetMapId(), target->GetPositionX(), target->GetPositionY(), target->GetPositionZ(),
     target->GetOrientation()); return false;
     }
@@ -2511,7 +2511,7 @@ bool DisperseSetAction::Execute(Event event)
     if (text == "disable")
     {
         RESET_AI_VALUE(float, "disperse distance");
-        botAI->TellMasterNoFacing("Disable disperse");
+        botAI->TellMasterNoFacing("禁用分散");
         return true;
     }
     if (text == "enable" || text == "reset")

@@ -101,7 +101,7 @@ bool FollowChatShortcutAction::Execute(Event event)
         if (bot->isDead())
         {
             bot->ResurrectPlayer(1.0f, false);
-            botAI->TellMasterNoFacing("Back from the grave!");
+            botAI->TellMasterNoFacing("我从墓穴中复活了!");
         }
         else
             botAI->TellMaster("You are too far away from me! I will there soon.");
@@ -249,7 +249,7 @@ bool NaxxChatShortcutAction::Execute(Event event)
     botAI->Reset();
     botAI->ChangeStrategy("+naxx", BOT_STATE_NON_COMBAT);
     botAI->ChangeStrategy("+naxx", BOT_STATE_COMBAT);
-    botAI->TellMasterNoFacing("Add Naxx Strategies!");
+    botAI->TellMasterNoFacing("添加纳克萨玛斯策略!");
     // bot->Say("Add Naxx Strategies!", LANG_UNIVERSAL);
     return true;
 }
@@ -263,6 +263,6 @@ bool BwlChatShortcutAction::Execute(Event event)
     botAI->Reset();
     botAI->ChangeStrategy("+bwl", BOT_STATE_NON_COMBAT);
     botAI->ChangeStrategy("+bwl", BOT_STATE_COMBAT);
-    botAI->TellMasterNoFacing("Add Bwl Strategies!");
+    botAI->TellMasterNoFacing("添加黑翼之巢策略!");
     return true;
 }

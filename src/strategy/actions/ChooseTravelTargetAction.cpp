@@ -529,7 +529,7 @@ bool ChooseTravelTargetAction::SetQuestTarget(TravelTarget* target, bool onlyCom
         activeDestinations = sTravelMgr->getQuestTravelDestinations(bot, -1, true, false); //If we really don't find any new quests look futher away.
 
     if (botAI->HasStrategy("debug travel", BotState::BOT_STATE_NON_COMBAT))
-        botAI->TellMasterNoFacing(std::to_string(activeDestinations.size()) + " quest destinations found.");
+        botAI->TellMasterNoFacing(std::to_string(activeDestinations.size()) + " 个任务目的地已找到。");
 
     if (!getBestDestination(&activeDestinations, &activePoints))
         return false;

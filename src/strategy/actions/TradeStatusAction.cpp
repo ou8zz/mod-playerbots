@@ -186,7 +186,7 @@ bool TradeStatusAction::CheckTrade()
         {
             if (bot->GetGroup() && bot->GetGroup()->IsMember(bot->GetTrader()->GetGUID()) &&
                 botAI->HasRealPlayerMaster())
-                botAI->TellMasterNoFacing("Thank you " + chat->FormatWorldobject(bot->GetTrader()));
+                botAI->TellMasterNoFacing("谢谢 " + chat->FormatWorldobject(bot->GetTrader()));
             else
                 bot->Say("Thank you " + chat->FormatWorldobject(bot->GetTrader()),
                          (bot->GetTeamId() == TEAM_ALLIANCE ? LANG_COMMON : LANG_ORCISH));

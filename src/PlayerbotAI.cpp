@@ -3572,8 +3572,15 @@ bool PlayerbotAI::TellMasterNoFacing(std::ostringstream& stream, PlayerbotSecuri
     return TellMasterNoFacing(stream.str(), securityLevel);
 }
 
-bool PlayerbotAI::TellMasterNoFacing(std::string const text, PlayerbotSecurityLevel securityLevel)
+bool PlayerbotAI::TellMasterNoFacing(std::string const in_text, PlayerbotSecurityLevel securityLevel)
 {
+    // 使用映射表进行文本翻译
+    std::string text = in_text;
+    auto it = g_chatTranslationMap.find(in_text);
+    if (it != g_chatTranslationMap.end()) {
+        text = it->second;
+    }
+
     Player* master = GetMaster();
     PlayerbotAI* masterBotAI = nullptr;
     if (master)
@@ -3645,14 +3652,7 @@ bool PlayerbotAI::TellMaster(std::ostringstream& stream, PlayerbotSecurityLevel 
 
 bool PlayerbotAI::TellMaster(std::string const text, PlayerbotSecurityLevel securityLevel)
 {
-    // 使用映射表进行文本翻译
-    std::string translatedText = text;
-    auto it = g_chatTranslationMap.find(text);
-    if (it != g_chatTranslationMap.end()) {
-        translatedText = it->second;
-    }
-    
-    if (!master || !TellMasterNoFacing(translatedText, securityLevel))
+    if (!master || !TellMasterNoFacing(text, securityLevel))
         return false;
 
     if (!bot->isMoving() && !bot->IsInCombat() && bot->GetMapId() == master->GetMapId() &&

@@ -29,7 +29,7 @@ bool ReviveFromCorpseAction::Execute(Event event)
         {
             if (!botAI->HasStrategy("follow", BOT_STATE_NON_COMBAT))
             {
-                botAI->TellMasterNoFacing("Welcome back!");
+                botAI->TellMasterNoFacing("欢迎回来!");
                 botAI->ChangeStrategy("+follow,-stay", BOT_STATE_NON_COMBAT);
                 return true;
             }

@@ -371,11 +371,11 @@ bool RpgTradeUsefulAction::Execute(Event event)
         {
             if (bot->GetGroup() && bot->GetGroup()->IsMember(guidP) && botAI->HasRealPlayerMaster())
                 botAI->TellMasterNoFacing(
-                    "You can use this " + chat->FormatItem(item->GetTemplate()) + " better than me, " +
-                    guidP.GetPlayer()->GetName() /*chat->FormatWorldobject(guidP.GetPlayer())*/ + ".");
+                    "你可以比我更好地使用这个 " + chat->FormatItem(item->GetTemplate()) + ", " +
+                    guidP.GetPlayer()->GetName() /*chat->FormatWorldobject(guidP.GetPlayer())*/ + "。");
             else
-                bot->Say("You can use this " + chat->FormatItem(item->GetTemplate()) + " better than me, " +
-                             player->GetName() /*chat->FormatWorldobject(player)*/ + ".",
+                bot->Say("你可以比我更好地使用这个 " + chat->FormatItem(item->GetTemplate()) + ", " +
+                             player->GetName() /*chat->FormatWorldobject(player)*/ + "。",
                          (bot->GetTeamId() == TEAM_ALLIANCE ? LANG_COMMON : LANG_ORCISH));
 
             if (!urand(0, 4) || items.size() < 2)

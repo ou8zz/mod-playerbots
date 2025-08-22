@@ -174,7 +174,7 @@ bool UseItemAction::UseItem(Item* item, ObjectGuid goGuid, Item* itemTarget, Uni
             bot->GetSession()->HandleQuestgiverAcceptQuestOpcode(packet);
 
             std::ostringstream out;
-            out << "Got quest " << chat->FormatQuest(qInfo);
+            out << "获得任务 " << chat->FormatQuest(qInfo);
             botAI->TellMasterNoFacing(out.str());
             return true;
         }
@@ -275,17 +275,17 @@ bool UseItemAction::UseItem(Item* item, ObjectGuid goGuid, Item* itemTarget, Uni
         if (isDrink && isFood)
         {
             p = std::min(hp, mp);
-            TellConsumableUse(item, "Feasting", p);
+            TellConsumableUse(item, "餐饮", p);
         }
         else if (isDrink)
         {
             p = mp;
-            TellConsumableUse(item, "Drinking", p);
+            TellConsumableUse(item, "饮用", p);
         }
         else if (isFood)
         {
             p = std::min(hp, mp);
-            TellConsumableUse(item, "Eating", p);
+            TellConsumableUse(item, "进食", p);
         }
 
         if (!bot->IsInCombat() && !bot->InBattleground())
