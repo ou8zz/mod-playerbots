@@ -296,7 +296,7 @@ bool ListSpellsAction::Execute(Event event)
 
     std::vector<std::pair<uint32, std::string>> spells = GetSpellList(filter);
 
-    botAI->TellMaster("=== Spells ===");
+    botAI->TellMaster("=== 法术 ===");
 
     std::sort(spells.begin(), spells.end(), CompareSpells);
 

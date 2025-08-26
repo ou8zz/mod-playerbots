@@ -138,7 +138,7 @@ void TradeStatusAction::BeginTrade()
     ListItemsVisitor visitor;
     IterateItems(&visitor);
 
-    botAI->TellMaster("=== Inventory ===");
+    botAI->TellMaster("=== 背包 ===");
     TellItems(visitor.items, visitor.soulbound);
 
     if (sRandomPlayerbotMgr->IsRandomBot(bot))
@@ -291,16 +291,16 @@ bool TradeStatusAction::CheckTrade()
         switch (urand(0, 4))
         {
             case 0:
-                botAI->TellMaster("A pleasure doing business with you");
+                botAI->TellMaster("很高兴与你做生意");
                 break;
             case 1:
-                botAI->TellMaster("Fair trade");
+                botAI->TellMaster("公平交易");
                 break;
             case 2:
-                botAI->TellMaster("Thanks");
+                botAI->TellMaster("谢谢");
                 break;
             case 3:
-                botAI->TellMaster("Off with you");
+                botAI->TellMaster("再见");
                 break;
         }
 

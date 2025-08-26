@@ -168,7 +168,7 @@ bool MaintenanceAction::Execute(Event event)
         return false;
     }
 
-    botAI->TellMaster("I'm maintaining");
+    botAI->TellMaster("我在维修");
     PlayerbotFactory factory(bot, bot->GetLevel());
     factory.InitAttunementQuests();
     factory.InitBags(false);
@@ -222,7 +222,7 @@ bool AutoGearAction::Execute(Event event)
         return false;
     }
 
-    botAI->TellMaster("I'm auto gearing");
+    botAI->TellMaster("我在自动装备");
     uint32 gs = sPlayerbotAIConfig->autoGearScoreLimit == 0
                     ? 0
                     : PlayerbotFactory::CalcMixedGearScore(sPlayerbotAIConfig->autoGearScoreLimit,

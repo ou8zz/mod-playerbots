@@ -54,7 +54,7 @@ bool DropQuestAction::Execute(Event event)
         bot->Say("Quest [ " + text_quest + " ] removed", LANG_UNIVERSAL);
     }
 
-    botAI->TellMaster("Quest removed");
+    botAI->TellMaster("任务已移除");
     return true;
 }
 
@@ -64,7 +64,7 @@ bool CleanQuestLogAction::Execute(Event event)
     Player* requester = event.getOwner() ? event.getOwner() : GetMaster();
     if (!requester)
     {
-        botAI->TellMaster("No event owner detected");
+        botAI->TellMaster("未检测到事件所有者");
         return false;
     }
 
@@ -76,7 +76,7 @@ bool CleanQuestLogAction::Execute(Event event)
     // Only output this message if "debug rpg" strategy is enabled
     if (botAI->HasStrategy("debug rpg", BotState::BOT_STATE_COMBAT))
     {
-        botAI->TellMaster("Clean Quest Log command received, removing grey/trivial quests...");
+        botAI->TellMaster("收到清理任务日志命令，移除灰色/简单任务...");
     }
 
     uint8 botLevel = bot->GetLevel();  // Get bot's level
@@ -128,7 +128,7 @@ bool CleanQuestLogAction::Execute(Event event)
             // Output only if "debug rpg" strategy is enabled
             if (botAI->HasStrategy("debug rpg", BotState::BOT_STATE_COMBAT))
             {
-                botAI->TellMaster("Quest [ " + quest->GetTitle() + " ] will be removed because it is trivial (grey).");
+                botAI->TellMaster("任务 [ " + quest->GetTitle() + " ] 将被移除，因为它是简单的（灰色）。");
             }
 
             // Remove quest
@@ -149,7 +149,7 @@ bool CleanQuestLogAction::Execute(Event event)
 
             if (botAI->HasStrategy("debug rpg", BotState::BOT_STATE_COMBAT))
             {
-                botAI->TellMaster("Quest [ " + quest->GetTitle() + " ] has been removed.");
+                botAI->TellMaster("任务 [ " + quest->GetTitle() + " ] 已被移除。");
             }
         }
         else
@@ -157,7 +157,7 @@ bool CleanQuestLogAction::Execute(Event event)
             // Only output if "debug rpg" strategy is enabled
             if (botAI->HasStrategy("debug rpg", BotState::BOT_STATE_COMBAT))
             {
-                botAI->TellMaster("Quest [ " + quest->GetTitle() + " ] is not trivial and will be kept.");
+                botAI->TellMaster("任务 [ " + quest->GetTitle() + " ] 不是简单的，将被保留。");
             }
         }
     }
@@ -238,7 +238,7 @@ void CleanQuestLogAction::DropQuestType(uint8& numQuest, uint8 wantNum, bool isG
             LOG_INFO("playerbots", "{} => Quest [ {} ] removed", bot->GetName(), quest->GetTitle());
             bot->Say("Quest [ " + text_quest + " ] removed", LANG_UNIVERSAL);
         }
-        botAI->TellMaster("Quest removed" + chat->FormatQuest(quest));
+        botAI->TellMaster("任务已移除" + chat->FormatQuest(quest));
     }
 }
 

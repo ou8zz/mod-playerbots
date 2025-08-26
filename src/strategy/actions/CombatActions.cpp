@@ -12,7 +12,7 @@
 
 bool SwitchToMeleeAction::Execute(Event event)
 {
-    // botAI->TellMasterNoFacing("Switching to melee!");
+    // botAI->TellMasterNoFacing("切换到近战！");
     return ChangeCombatStrategyAction::Execute(event);
 }
 
@@ -34,7 +34,7 @@ bool SwitchToMeleeAction::isUseful()
 
 bool SwitchToRangedAction::Execute(Event event)
 {
-    // botAI->TellMasterNoFacing("Switching to ranged!");
+    // botAI->TellMasterNoFacing("切换到远程！");
     return ChangeCombatStrategyAction::Execute(event);
 }
 

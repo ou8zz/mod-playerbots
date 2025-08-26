@@ -123,7 +123,7 @@ void SellAction::Sell(Item* item)
             bot->SetMoney(botMoney);
         }
 
-        out << "Selling " << chat->FormatItem(item->GetTemplate());
+        out << "出售 " << chat->FormatItem(item->GetTemplate());
         botAI->TellMaster(out);
 
         bot->PlayDistanceSound(120);

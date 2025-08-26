@@ -15,7 +15,7 @@ bool TellTargetAction::Execute(Event event)
     if (target)
     {
         std::ostringstream out;
-        out << "Attacking " << target->GetName();
+        out << "正在攻击 " << target->GetName();
         botAI->TellMaster(out);
 
         context->GetValue<Unit*>("old target")->Set(target);
@@ -26,7 +26,7 @@ bool TellTargetAction::Execute(Event event)
 
 bool TellAttackersAction::Execute(Event event)
 {
-    botAI->TellMaster("--- Attackers ---");
+    botAI->TellMaster("--- 攻击者 ---");
 
     GuidVector attackers = context->GetValue<GuidVector>("attackers")->Get();
     int32 count = 0;
@@ -39,7 +39,7 @@ bool TellAttackersAction::Execute(Event event)
         botAI->TellMaster(std::to_string(++count) + std::string(".") + unit->GetName());
     }
 
-    botAI->TellMaster("--- Threat ---");
+    botAI->TellMaster("--- 仇恨值 ---");
 
     HostileReference* ref = bot->getHostileRefMgr().getFirst();
     if (!ref)

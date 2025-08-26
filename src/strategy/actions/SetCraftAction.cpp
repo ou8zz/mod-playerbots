@@ -24,7 +24,7 @@ bool SetCraftAction::Execute(Event event)
     if (link == "reset")
     {
         data.Reset();
-        botAI->TellMaster("I will not craft anything");
+        botAI->TellMaster("我不会制作任何东西");
         return true;
     }
 
@@ -37,7 +37,7 @@ bool SetCraftAction::Execute(Event event)
     ItemIds itemIds = chat->parseItems(link);
     if (itemIds.empty())
     {
-        botAI->TellMaster("Usage: 'craft [itemId]' or 'craft reset'");
+        botAI->TellMaster("用法：'craft [物品ID]' 或 'craft reset'");
         return false;
     }
 
@@ -97,7 +97,7 @@ bool SetCraftAction::Execute(Event event)
 
     if (data.required.empty())
     {
-        botAI->TellMaster("I cannot craft this");
+        botAI->TellMaster("我不能制作这个");
         return false;
     }
 
@@ -112,7 +112,7 @@ void SetCraftAction::TellCraft()
     CraftData& data = AI_VALUE(CraftData&, "craft");
     if (data.IsEmpty())
     {
-        botAI->TellMaster("I will not craft anything");
+        botAI->TellMaster("我不会制作任何东西");
         return;
     }
 

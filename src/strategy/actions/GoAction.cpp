@@ -53,7 +53,7 @@ bool GoAction::Execute(Event event)
             target->setForced(true);
 
             std::ostringstream out;
-            out << "Traveling to " << dest->getTitle();
+            out << "前往 " << dest->getTitle();
             botAI->TellMasterNoFacing(out.str());
 
             return true;
@@ -83,7 +83,7 @@ bool GoAction::Execute(Event event)
                     }
 
                     std::ostringstream out;
-                    out << "Moving to " << ChatHelper::FormatGameobject(go);
+                    out << "移动到 " << ChatHelper::FormatGameobject(go);
                     botAI->TellMasterNoFacing(out.str());
                     return MoveNear(bot->GetMapId(), go->GetPositionX(), go->GetPositionY(), go->GetPositionZ() + 0.5f,
                                     sPlayerbotAIConfig->followDistance);
@@ -103,7 +103,7 @@ bool GoAction::Execute(Event event)
             if (strstri(unit->GetName().c_str(), param.c_str()))
             {
                 std::ostringstream out;
-                out << "Moving to " << unit->GetName();
+                out << "移动到 " << unit->GetName();
                 botAI->TellMasterNoFacing(out.str());
                 return MoveNear(bot->GetMapId(), unit->GetPositionX(), unit->GetPositionY(),
                                 unit->GetPositionZ() + 0.5f, sPlayerbotAIConfig->followDistance);
@@ -179,7 +179,7 @@ bool GoAction::Execute(Event event)
         if (sServerFacade->IsDistanceGreaterThan(sServerFacade->GetDistance2d(bot, x, y),
                                                  sPlayerbotAIConfig->reactDistance))
         {
-            botAI->TellMaster("It is too far away");
+            botAI->TellMaster("距离太远");
             return false;
         }
 
@@ -200,7 +200,7 @@ bool GoAction::Execute(Event event)
         Map2ZoneCoordinates(x1, y1, bot->GetZoneId());
 
         std::ostringstream out;
-        out << "Moving to " << x1 << "," << y1;
+        out << "移动到 " << x1 << "," << y1;
         botAI->TellMasterNoFacing(out.str());
 
         return MoveNear(bot->GetMapId(), x, y, z + 0.5f, sPlayerbotAIConfig->followDistance);
@@ -217,11 +217,11 @@ bool GoAction::Execute(Event event)
         }
 
         std::ostringstream out;
-        out << "Moving to position " << param;
+        out << "移动到位置 " << param;
         botAI->TellMasterNoFacing(out.str());
         return MoveNear(bot->GetMapId(), pos.x, pos.y, pos.z + 0.5f, sPlayerbotAIConfig->followDistance);
     }
 
-    botAI->TellMaster("Whisper 'go x,y', 'go [game object]', 'go unit' or 'go position' and I will go there");
+    botAI->TellMaster("对我说 'go x,y', 'go [游戏物体]', 'go 单位' 或 'go 位置'，我就会去那里");
     return false;
 }

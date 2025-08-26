@@ -79,7 +79,7 @@ void TellLosAction::ListGameObjects(std::string const title, GuidVector gos)
 
 bool TellAuraAction::Execute(Event event)
 {
-    botAI->TellMaster("--- Auras ---");
+    botAI->TellMaster("--- 光环 ---");
     sLog->outMessage("playerbot", LOG_LEVEL_DEBUG, "--- Auras ---");
     Unit::AuraApplicationMap& map = bot->GetAppliedAuras();
     for (Unit::AuraApplicationMap::iterator i = map.begin(); i != map.end(); ++i)
@@ -106,7 +106,7 @@ bool TellAuraAction::Execute(Event event)
                              " isArea: " + std::to_string(is_area) + " duration: " + std::to_string(duration) +
                              " spellId: " + std::to_string(spellId) + " isPositive: " + std::to_string(isPositive));
 
-        botAI->TellMaster("Info of Aura - name: " + auraName + " caster: " + caster_name + " type: " +
+        botAI->TellMaster("光环信息 - 名称：" + auraName + " 施放者：" + caster_name + " 类型：" +
                           std::to_string(type) + " owner: " + owner_name + " distance: " + std::to_string(distance) +
                           " isArea: " + std::to_string(is_area) + " duration: " + std::to_string(duration) +
                           " spellId: " + std::to_string(spellId) + " isPositive: " + std::to_string(isPositive));
@@ -122,7 +122,7 @@ bool TellAuraAction::Execute(Event event)
                                  " radius: " + std::to_string(radius) + " spell id: " + std::to_string(spellId) +
                                  " duration: " + std::to_string(duration));
 
-            botAI->TellMaster(std::string("Info of DynamicObject -") + " name: " + dyn_owner->GetName() +
+            botAI->TellMaster(std::string("动态对象信息 -") + " 名称：" + dyn_owner->GetName() +
                               " radius: " + std::to_string(radius) + " spell id: " + std::to_string(spellId) +
                               " duration: " + std::to_string(duration));
         }
@@ -133,7 +133,7 @@ bool TellAuraAction::Execute(Event event)
 bool TellEstimatedDpsAction::Execute(Event event)
 {
     float dps = AI_VALUE(float, "estimated group dps");
-    botAI->TellMaster("Estimated Group DPS: " + std::to_string(dps));
+    botAI->TellMaster("预估队伍DPS：" + std::to_string(dps));
     return true;
 }
 
@@ -149,7 +149,7 @@ bool TellCalculateItemAction::Execute(Event event)
     float score = calculator.CalculateItem(item.itemId, item.randomPropertyId);
 
     std::ostringstream out;
-    out << "Calculated score of " << chat->FormatItem(proto) << " : " << score;
+    out << "计算得分：" << chat->FormatItem(proto) << " : " << score;
     botAI->TellMasterNoFacing(out.str());
     return true;
 }

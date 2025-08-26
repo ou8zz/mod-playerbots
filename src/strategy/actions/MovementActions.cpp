@@ -428,7 +428,7 @@ bool MovementAction::MoveTo(uint32 mapId, float x, float y, float z, bool idle, 
 
     //                     bot->StopMoving();
     //                     if (botAI->HasStrategy("debug move", BOT_STATE_NON_COMBAT))
-    //                         botAI->TellMasterNoFacing("I have no path");
+    //                         botAI->TellMasterNoFacing("我没有路径");
     //                     LOG_DEBUG("playerbots", "sServerFacade->IsDistanceGreaterThan(totalDistance, maxDist * 3)");
     //                     return false;
     //                 }
@@ -458,14 +458,14 @@ bool MovementAction::MoveTo(uint32 mapId, float x, float y, float z, bool idle, 
     // {
     //     if (movePath.makeShortCut(startPosition, maxDist))
     //         if (botAI->HasStrategy("debug move", BOT_STATE_NON_COMBAT))
-    //             botAI->TellMasterNoFacing("Found a shortcut.");
+    //             botAI->TellMasterNoFacing("找到了捷径。");
 
     //     if (movePath.empty())
     //     {
     //         AI_VALUE(LastMovement&, "last movement").setPath(movePath);
 
     //         if (botAI->HasStrategy("debug move", BOT_STATE_NON_COMBAT))
-    //             botAI->TellMasterNoFacing("Too far from path. Rebuilding.");
+    //             botAI->TellMasterNoFacing("距离路径太远。重新构建。");
     //         LOG_DEBUG("playerbots", "movePath.empty()");
     //         return true;
     //     }
@@ -597,7 +597,7 @@ bool MovementAction::MoveTo(uint32 mapId, float x, float y, float z, bool idle, 
     //     AI_VALUE(LastMovement&, "last movement").setPath(movePath);
 
     //     if (botAI->HasStrategy("debug move", BOT_STATE_NON_COMBAT))
-    //         botAI->TellMasterNoFacing("No point. Rebuilding.");
+    //         botAI->TellMasterNoFacing("没有目标点。重新构建。");
     //     LOG_DEBUG("playerbots", "!movePosition || movePosition.getMapId() != bot->GetMapId()");
     //     return false;
     // }
@@ -622,7 +622,7 @@ bool MovementAction::MoveTo(uint32 mapId, float x, float y, float z, bool idle, 
     //     AI_VALUE(LastMovement&, "last movement").setPath(movePath);
 
     //     if (botAI->HasStrategy("debug move", BOT_STATE_NON_COMBAT))
-    //         botAI->TellMasterNoFacing("No point. Rebuilding.");
+    //         botAI->TellMasterNoFacing("没有目标点。重新构建。");
 
     //     return false;
     // }
@@ -2526,7 +2526,7 @@ bool DisperseSetAction::Execute(Event event)
         }
         float dis = AI_VALUE(float, "disperse distance");
         std::ostringstream out;
-        out << "Enable disperse distance " << std::setprecision(2) << dis;
+        out << "启用分散距离 " << std::setprecision(2) << dis;
         botAI->TellMasterNoFacing(out.str());
         return true;
     }
@@ -2536,13 +2536,13 @@ bool DisperseSetAction::Execute(Event event)
         std::ostringstream out;
         if (dis <= 0.0f)
         {
-            out << "Enable disperse first";
+            out << "请先启用分散";
             botAI->TellMasterNoFacing(out.str());
             return true;
         }
         dis += 1.0f;
         SET_AI_VALUE(float, "disperse distance", dis);
-        out << "Increase disperse distance to " << std::setprecision(2) << dis;
+        out << "增加分散距离至" << std::setprecision(2) << dis;
         botAI->TellMasterNoFacing(out.str());
         return true;
     }
@@ -2556,7 +2556,7 @@ bool DisperseSetAction::Execute(Event event)
         }
         SET_AI_VALUE(float, "disperse distance", dis);
         std::ostringstream out;
-        out << "Increase disperse distance to " << std::setprecision(2) << dis;
+        out << "增加分散距离至" << std::setprecision(2) << dis;
         botAI->TellMasterNoFacing(out.str());
         return true;
     }
@@ -2568,22 +2568,22 @@ bool DisperseSetAction::Execute(Event event)
         std::ostringstream out;
         if (dis < 0 || dis > 100.0f)
         {
-            out << "Invalid disperse distance " << std::setprecision(2) << dis;
+            out << "无效的分散距离" << std::setprecision(2) << dis;
         }
         else
         {
             SET_AI_VALUE(float, "disperse distance", dis);
-            out << "Set disperse distance to " << std::setprecision(2) << dis;
+            out << "设置分散距离为" << std::setprecision(2) << dis;
         }
         botAI->TellMasterNoFacing(out.str());
         return true;
     }
     std::ostringstream out;
-    out << "Usage: disperse [enable | disable | increase | decrease | set {distance}]";
+    out << "用法：disperse [enable | disable | increase | decrease | set {距离}]";
     float dis = AI_VALUE(float, "disperse distance");
     if (dis > 0.0f)
     {
-        out << "(Current disperse distance: " << std::setprecision(2) << dis << ")";
+        out << "（当前分散距离：" << std::setprecision(2) << dis << "）";
     }
     botAI->TellMasterNoFacing(out.str());
     return true;

@@ -32,7 +32,7 @@ bool ShareQuestAction::Execute(Event event)
             WorldPacket p;
             p << entry;
             bot->GetSession()->HandlePushQuestToParty(p);
-            botAI->TellMaster("Quest shared");
+            botAI->TellMaster("任务已分享");
             return true;
         }
     }
@@ -99,7 +99,7 @@ bool AutoShareQuestAction::Execute(Event event)
         WorldPacket p;
         p << logQuest;
         bot->GetSession()->HandlePushQuestToParty(p);
-        botAI->TellMaster("Quest shared");
+        botAI->TellMaster("任务已分享");
         shared = true;
     }
 

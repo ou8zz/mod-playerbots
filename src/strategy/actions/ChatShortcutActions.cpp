@@ -89,7 +89,7 @@ bool FollowChatShortcutAction::Execute(Event event)
 
         if (moved)
         {
-            botAI->TellMaster("Following");
+            botAI->TellMaster("跟随中");
             return true;
         }
     }
@@ -104,14 +104,14 @@ bool FollowChatShortcutAction::Execute(Event event)
             botAI->TellMasterNoFacing("我从墓穴中复活了!");
         }
         else
-            botAI->TellMaster("You are too far away from me! I will there soon.");
+            botAI->TellMaster("你离我太远了!我很快就到。");
 
         bot->TeleportTo(master->GetMapId(), master->GetPositionX(), master->GetPositionY(), master->GetPositionZ(),
     master->GetOrientation()); return true;
     }
     */
 
-    botAI->TellMaster("Following");
+    botAI->TellMaster("跟随中");
     return true;
 }
 
@@ -128,7 +128,7 @@ bool StayChatShortcutAction::Execute(Event event)
     SetReturnPosition(bot->GetPositionX(), bot->GetPositionY(), bot->GetPositionZ());
     SetStayPosition(bot->GetPositionX(), bot->GetPositionY(), bot->GetPositionZ());
 
-    botAI->TellMaster("Staying");
+    botAI->TellMaster("停留");
     return true;
 }
 
@@ -143,7 +143,7 @@ bool MoveFromGroupChatShortcutAction::Execute(Event event)
     botAI->ChangeStrategy("+move from group", BOT_STATE_NON_COMBAT);
     botAI->ChangeStrategy("+move from group", BOT_STATE_COMBAT);
 
-    botAI->TellMaster("Moving away from group");
+    botAI->TellMaster("离开队伍");
     return true;
 }
 
@@ -162,11 +162,11 @@ bool FleeChatShortcutAction::Execute(Event event)
 
     if (bot->GetMapId() != master->GetMapId() || bot->GetDistance(master) > sPlayerbotAIConfig->sightDistance)
     {
-        botAI->TellError("I will not flee with you - too far away");
+        botAI->TellError("我不会和你一起逃跑 - 离得太远了");
         return true;
     }
 
-    botAI->TellMaster("Fleeing");
+    botAI->TellMaster("逃跑中");
     return true;
 }
 
@@ -183,7 +183,7 @@ bool GoawayChatShortcutAction::Execute(Event event)
     ResetReturnPosition();
     ResetStayPosition();
 
-    botAI->TellMaster("Running away");
+    botAI->TellMaster("逃跑中");
     return true;
 }
 
@@ -199,7 +199,7 @@ bool GrindChatShortcutAction::Execute(Event event)
     ResetReturnPosition();
     ResetStayPosition();
 
-    botAI->TellMaster("Grinding");
+    botAI->TellMaster("刷怪中");
     return true;
 }
 
@@ -219,7 +219,7 @@ bool TankAttackChatShortcutAction::Execute(Event event)
     ResetReturnPosition();
     ResetStayPosition();
 
-    botAI->TellMaster("Attacking");
+    botAI->TellMaster("攻击中");
     return true;
 }
 
@@ -235,7 +235,7 @@ bool MaxDpsChatShortcutAction::Execute(Event event)
     botAI->Reset();
 
     botAI->ChangeStrategy("-threat,-conserve mana,-cast time,+dps debuff,+boost", BOT_STATE_COMBAT);
-    botAI->TellMaster("Max DPS!");
+    botAI->TellMaster("最大DPS!");
 
     return true;
 }

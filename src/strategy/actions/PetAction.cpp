@@ -98,7 +98,7 @@ bool PetAction::Execute(Event event)
                     stance = "unknown";
                     break;
             }
-            botAI->TellMaster("Current stance of " + type + " \"" + name + "\": " + stance + ".");
+            botAI->TellMaster("当前" + type + "\"" + name + "\"的姿态：" + stance + "。");
         }
         return true;
     }
@@ -182,7 +182,7 @@ bool PetAction::Execute(Event event)
         }
         // Inform the master if the command succeeded or failed.
         if (didAttack && sPlayerbotAIConfig->petChatCommandDebug == 1)
-            botAI->TellMaster("Pet commanded to attack your target.");
+            botAI->TellMaster("宠物已被命令攻击你的目标。");
         else if (!didAttack)
             botAI->TellError("Pet did not attack. (Already attacking or unable to attack target)");
         return didAttack;
@@ -192,7 +192,7 @@ bool PetAction::Execute(Event event)
     {
         botAI->PetFollow();
         if (sPlayerbotAIConfig->petChatCommandDebug == 1)
-            botAI->TellMaster("Pet commanded to follow.");
+            botAI->TellMaster("宠物已被命令跟随。");
         return true;
     }
     // The "stay" command causes all pets/guardians to stop and stay in place.
@@ -229,7 +229,7 @@ bool PetAction::Execute(Event event)
             }
         }
         if (sPlayerbotAIConfig->petChatCommandDebug == 1)
-            botAI->TellMaster("Pet commanded to stay.");
+            botAI->TellMaster("宠物已被命令留守。");
         return true;
     }
     // Unknown command: show usage instructions and return.
@@ -251,7 +251,7 @@ bool PetAction::Execute(Event event)
 
     // Inform the master of the new stance if debug is enabled.
     if (sPlayerbotAIConfig->petChatCommandDebug == 1)
-        botAI->TellMaster("Pet stance set to " + stanceText + ".");
+        botAI->TellMaster("宠物姿态已设置为" + stanceText + "。");
 
     return true;
 }

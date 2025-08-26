@@ -44,20 +44,20 @@ void ListQuestsAction::ListQuests(QuestListFilter filter, QuestTravelDetail trav
     bool showCompleted = filter & QUEST_LIST_FILTER_COMPLETED;
 
     if (showIncompleted)
-        botAI->TellMaster("--- Incompleted quests ---");
+        botAI->TellMaster("--- 未完成任务 ---");
 
     uint32 incompleteCount = ListQuests(false, !showIncompleted, travelDetail);
 
     if (showCompleted)
-        botAI->TellMaster("--- Completed quests ---");
+        botAI->TellMaster("--- 已完成任务 ---");
 
     uint32 completeCount = ListQuests(true, !showCompleted, travelDetail);
 
-    botAI->TellMaster("--- Summary ---");
+    botAI->TellMaster("--- 摘要 ---");
 
     std::ostringstream out;
-    out << "Total: " << (completeCount + incompleteCount) << " / 25 (incompleted: " << incompleteCount
-        << ", completed: " << completeCount << ")";
+    out << "总计: " << (completeCount + incompleteCount) << " / 25 (未完成: " << incompleteCount
+        << ", 已完成: " << completeCount << ")";
     botAI->TellMaster(out);
 }
 
@@ -97,8 +97,8 @@ uint32 ListQuestsAction::ListQuests(bool completed, bool silent, QuestTravelDeta
                 if (QuestDestination->GetQuestTemplate()->GetQuestId() == questId)
                 {
                     std::ostringstream out;
-                    out << "[Active] traveling " << target->getPosition()->distance(botPos);
-                    out << " to " << QuestDestination->getTitle();
+                    out << "[进行中] 前往 " << target->getPosition()->distance(botPos);
+                    out << " 到 " << QuestDestination->getTitle();
                     botAI->TellMaster(out);
                 }
             }
@@ -126,13 +126,13 @@ uint32 ListQuestsAction::ListQuests(bool completed, bool silent, QuestTravelDeta
                 apoints += dest->getPoints().size();
 
             std::ostringstream out;
-            out << desAvail << "/" << desTot << " destinations " << apoints << "/" << tpoints << " points. ";
+            out << desAvail << "/" << desTot << " 个目的地 " << apoints << "/" << tpoints << " 点数. ";
 
             if (desFull > 0)
-                out << desFull << " crowded.";
+                out << desFull << " 个拥挤.";
 
             if (desRange > 0)
-                out << desRange << " out of range.";
+                out << desRange << " 个超出范围.";
 
             botAI->TellMaster(out);
         }
@@ -159,19 +159,19 @@ uint32 ListQuestsAction::ListQuests(bool completed, bool silent, QuestTravelDeta
                 uint32 apoints = dest->getPoints().size();
 
                 out << round(dest->distanceTo(const_cast<WorldPosition*>(&botPos)));
-                out << " to " << dest->getTitle();
+                out << " 到 " << dest->getTitle();
                 out << " " << apoints;
 
                 if (apoints < tpoints)
                     out << "/" << tpoints;
 
-                out << " points.";
+                out << " 点数.";
 
                 if (!dest->isActive(bot))
-                    out << " not active";
+                    out << " 未激活";
 
                 if (dest->isFull(bot))
-                    out << " crowded";
+                    out << " 拥挤";
 
                 botAI->TellMaster(out);
 

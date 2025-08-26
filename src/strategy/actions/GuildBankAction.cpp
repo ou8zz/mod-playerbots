@@ -16,7 +16,7 @@ bool GuildBankAction::Execute(Event event)
 
     if (!bot->GetGuildId() || (GetMaster() && GetMaster()->GetGuildId() != bot->GetGuildId()))
     {
-        botAI->TellMaster("I'm not in your guild!");
+        botAI->TellMaster("我不在你的公会里!");
         return false;
     }
 
@@ -30,7 +30,7 @@ bool GuildBankAction::Execute(Event event)
         return Execute(text, go);
     }
 
-    botAI->TellMaster("Cannot find the guild bank nearby");
+    botAI->TellMaster("附近找不到公会银行");
     return false;
 }
 

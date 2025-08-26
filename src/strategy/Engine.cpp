@@ -571,7 +571,7 @@ bool Engine::ListenAndExecute(Action* action, Event event)
     if (botAI->HasStrategy("debug", BOT_STATE_NON_COMBAT))
     {
         std::ostringstream out;
-        out << "do: ";
+        out << "执行: ";
         out << action->getName();
 
         if (actionExecuted)

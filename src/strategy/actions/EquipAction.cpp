@@ -73,7 +73,7 @@ void EquipAction::EquipItem(Item* item)
     {
         bot->SetAmmo(itemId);
         std::ostringstream out;
-        out << "equipping " << chat->FormatItem(itemProto);
+        out << "装备 " << chat->FormatItem(itemProto);
         botAI->TellMaster(out);
         return;
     }
@@ -107,7 +107,7 @@ void EquipAction::EquipItem(Item* item)
             bot->GetSession()->HandleAutoEquipItemSlotOpcode(packet);
         
             std::ostringstream out;
-            out << "Equipping " << chat->FormatItem(itemProto) << " in ranged slot";
+            out << "装备 " << chat->FormatItem(itemProto) << " 到远程槽位";
             botAI->TellMaster(out);
             return;
         }
@@ -213,12 +213,12 @@ void EquipAction::EquipItem(Item* item)
                     bot->GetSession()->HandleAutoEquipItemSlotOpcode(offhandPacket);
             
                     std::ostringstream moveMsg;
-                    moveMsg << "Main hand upgrade found. Moving " << chat->FormatItem(oldMHProto) << " to offhand";
+                    moveMsg << "找到主手升级。移动 " << chat->FormatItem(oldMHProto) << " 到副手";
                     botAI->TellMaster(moveMsg);
                 }
             
                 std::ostringstream out;
-                out << "Equipping " << chat->FormatItem(itemProto) << " in main hand";
+                out << "装备 " << chat->FormatItem(itemProto) << " 到主手";
                 botAI->TellMaster(out);
                 return;
             }
@@ -233,7 +233,7 @@ void EquipAction::EquipItem(Item* item)
                 bot->GetSession()->HandleAutoEquipItemSlotOpcode(eqPacket);
 
                 std::ostringstream out;
-                out << "Equipping " << chat->FormatItem(itemProto) << " in offhand";
+                out << "装备 " << chat->FormatItem(itemProto) << " 到副手";
                 botAI->TellMaster(out);
                 return;
             }
@@ -292,7 +292,7 @@ void EquipAction::EquipItem(Item* item)
     }
 
     std::ostringstream out;
-    out << "Equipping " << chat->FormatItem(itemProto);
+    out << "装备 " << chat->FormatItem(itemProto);
     botAI->TellMaster(out);
 }
 

@@ -24,7 +24,7 @@ bool TaxiAction::Execute(Event event)
     {
         movement.taxiNodes.clear();
         movement.Set(nullptr);
-        botAI->TellMaster("I am ready for the next flight");
+        botAI->TellMaster("我已准备好下一次飞行");
         return true;
     }
 

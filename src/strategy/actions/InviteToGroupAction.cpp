@@ -427,8 +427,8 @@ bool LfgAction::Execute(Event event)
         std::ostringstream out;
         if (allowedRoles[role] > 1)
         {
-            out << "Joining as " << placeholders["%role"] << ", " << placeholders["%spotsleft"] << " "
-                << placeholders["%role"] << " spots left.";
+            out << "以 " << placeholders["%role"] << " 身份加入，还有 " << placeholders["%spotsleft"] << " 个 "
+                << placeholders["%role"] << " 位置。";
             botAI->TellMasterNoFacing(out.str());
 
             //botAI->DoSpecificAction("autogear");
@@ -436,7 +436,7 @@ bool LfgAction::Execute(Event event)
         }
         else
         {
-            out << "Joining as " << placeholders["%role"] << ".";
+            out << "以 " << placeholders["%role"] << " 身份加入。";
             botAI->TellMasterNoFacing(out.str());
 
             //botAI->DoSpecificAction("autogear");

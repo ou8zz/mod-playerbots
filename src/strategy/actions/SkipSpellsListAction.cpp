@@ -30,7 +30,7 @@ bool SkipSpellsListAction::Execute(Event event)
     if (cmd == "reset")
     {
         skipSpells.clear();
-        botAI->TellMaster("Ignored spell list is empty");
+        botAI->TellMaster("忽略法术列表为空");
         return true;
     }
 
@@ -39,7 +39,7 @@ bool SkipSpellsListAction::Execute(Event event)
         std::ostringstream out;
         if (skipSpells.empty())
         {
-            botAI->TellMaster("Ignored spell list is empty");
+            botAI->TellMaster("忽略法术列表为空");
             return true;
         }
 

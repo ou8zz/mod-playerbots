@@ -75,7 +75,7 @@ bool DebugAction::Execute(Event event)
             TravelNodeRoute route = sTravelNodeMap->getRoute(botPos, *points.front(), beginPath, bot);
 
             std::ostringstream out;
-            out << "Traveling to " << dest->getTitle() << ": ";
+            out << "前往 " << dest->getTitle() << ": ";
 
             for (auto node : route.getNodes())
             {
@@ -160,7 +160,7 @@ bool DebugAction::Execute(Event event)
     else if (text.find("bquest") != std::string::npos)
     {
         std::ostringstream out;
-        out << "bad quests:";
+        out << "不良任务:";
 
         // uint32 noT = 0, noG = 0, noO = 0; //not used, line marked for removal.
 

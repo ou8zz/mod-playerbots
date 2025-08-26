@@ -40,29 +40,29 @@ static bool substrContainsInMap(std::string const searchTerm, std::map<std::stri
 
 ChatHelper::ChatHelper(PlayerbotAI* botAI) : PlayerbotAIAware(botAI)
 {
-    itemQualities["poor"] = ITEM_QUALITY_POOR;
-    itemQualities["gray"] = ITEM_QUALITY_POOR;
-    itemQualities["normal"] = ITEM_QUALITY_NORMAL;
-    itemQualities["white"] = ITEM_QUALITY_NORMAL;
-    itemQualities["uncommon"] = ITEM_QUALITY_UNCOMMON;
-    itemQualities["green"] = ITEM_QUALITY_UNCOMMON;
-    itemQualities["rare"] = ITEM_QUALITY_RARE;
-    itemQualities["blue"] = ITEM_QUALITY_RARE;
-    itemQualities["epic"] = ITEM_QUALITY_EPIC;
-    itemQualities["violet"] = ITEM_QUALITY_EPIC;
-    itemQualities["legendary"] = ITEM_QUALITY_LEGENDARY;
-    itemQualities["yellow"] = ITEM_QUALITY_LEGENDARY;
+    itemQualities["破烂"] = ITEM_QUALITY_POOR;
+    itemQualities["垃圾"] = ITEM_QUALITY_POOR;
+    itemQualities["正常"] = ITEM_QUALITY_NORMAL;
+    itemQualities["白板"] = ITEM_QUALITY_NORMAL;
+    itemQualities["稀有"] = ITEM_QUALITY_UNCOMMON;
+    itemQualities["绿色"] = ITEM_QUALITY_UNCOMMON;
+    itemQualities["稀有"] = ITEM_QUALITY_RARE;
+    itemQualities["蓝色"] = ITEM_QUALITY_RARE;
+    itemQualities["精良"] = ITEM_QUALITY_EPIC;
+    itemQualities["紫装"] = ITEM_QUALITY_EPIC;
+    itemQualities["史诗"] = ITEM_QUALITY_LEGENDARY;
+    itemQualities["橙装"] = ITEM_QUALITY_LEGENDARY;
 
-    consumableSubClasses["potion"] = ITEM_SUBCLASS_POTION;
-    consumableSubClasses["elixir"] = ITEM_SUBCLASS_ELIXIR;
-    consumableSubClasses["flask"] = ITEM_SUBCLASS_FLASK;
-    consumableSubClasses["scroll"] = ITEM_SUBCLASS_SCROLL;
-    consumableSubClasses["food"] = ITEM_SUBCLASS_FOOD;
-    consumableSubClasses["bandage"] = ITEM_SUBCLASS_BANDAGE;
-    consumableSubClasses["enchant"] = ITEM_SUBCLASS_CONSUMABLE_OTHER;
+    consumableSubClasses["药水"] = ITEM_SUBCLASS_POTION;
+    consumableSubClasses["合剂"] = ITEM_SUBCLASS_ELIXIR;
+    consumableSubClasses["瓶剂"] = ITEM_SUBCLASS_FLASK;
+    consumableSubClasses["卷轴"] = ITEM_SUBCLASS_SCROLL;
+    consumableSubClasses["食物"] = ITEM_SUBCLASS_FOOD;
+    consumableSubClasses["绷带"] = ITEM_SUBCLASS_BANDAGE;
+    consumableSubClasses["附魔"] = ITEM_SUBCLASS_CONSUMABLE_OTHER;
 
-    projectileSubClasses["arrows"] = ITEM_SUBCLASS_ARROW;
-    projectileSubClasses["bullets"] = ITEM_SUBCLASS_BULLET;
+    projectileSubClasses["箭"] = ITEM_SUBCLASS_ARROW;
+    projectileSubClasses["子弹"] = ITEM_SUBCLASS_BULLET;
 
     // tradeSubClasses["cloth"] = ITEM_SUBCLASS_CLOTH;
     // tradeSubClasses["leather"] = ITEM_SUBCLASS_LEATHER;
@@ -78,109 +78,109 @@ ChatHelper::ChatHelper(PlayerbotAI* botAI) : PlayerbotAIAware(botAI)
     // tradeSubClasses["jewels"] = ITEM_SUBCLASS_JEWELCRAFTING;
     // tradeSubClasses["jewelcrafting"] = ITEM_SUBCLASS_JEWELCRAFTING;
 
-    slots["head"] = EQUIPMENT_SLOT_HEAD;
-    slots["neck"] = EQUIPMENT_SLOT_NECK;
-    slots["shoulder"] = EQUIPMENT_SLOT_SHOULDERS;
-    slots["shirt"] = EQUIPMENT_SLOT_BODY;
-    slots["chest"] = EQUIPMENT_SLOT_CHEST;
-    slots["waist"] = EQUIPMENT_SLOT_WAIST;
-    slots["legs"] = EQUIPMENT_SLOT_LEGS;
-    slots["feet"] = EQUIPMENT_SLOT_FEET;
-    slots["wrist"] = EQUIPMENT_SLOT_WRISTS;
-    slots["hands"] = EQUIPMENT_SLOT_HANDS;
-    slots["finger 1"] = EQUIPMENT_SLOT_FINGER1;
-    slots["finger 2"] = EQUIPMENT_SLOT_FINGER2;
-    slots["trinket 1"] = EQUIPMENT_SLOT_TRINKET1;
-    slots["trinket 2"] = EQUIPMENT_SLOT_TRINKET2;
-    slots["back"] = EQUIPMENT_SLOT_BACK;
-    slots["main hand"] = EQUIPMENT_SLOT_MAINHAND;
-    slots["off hand"] = EQUIPMENT_SLOT_OFFHAND;
-    slots["ranged"] = EQUIPMENT_SLOT_RANGED;
-    slots["tabard"] = EQUIPMENT_SLOT_TABARD;
+    slots["头部"] = EQUIPMENT_SLOT_HEAD;
+    slots["颈部"] = EQUIPMENT_SLOT_NECK;
+    slots["肩膀"] = EQUIPMENT_SLOT_SHOULDERS;
+    slots["衬衣"] = EQUIPMENT_SLOT_BODY;
+    slots["胸甲"] = EQUIPMENT_SLOT_CHEST;
+    slots["腰部"] = EQUIPMENT_SLOT_WAIST;
+    slots["腿部"] = EQUIPMENT_SLOT_LEGS;
+    slots["脚"] = EQUIPMENT_SLOT_FEET;
+    slots["手腕"] = EQUIPMENT_SLOT_WRISTS;
+    slots["护手"] = EQUIPMENT_SLOT_HANDS;
+    slots["戒指1"] = EQUIPMENT_SLOT_FINGER1;
+    slots["戒指2"] = EQUIPMENT_SLOT_FINGER2;
+    slots["饰品1"] = EQUIPMENT_SLOT_TRINKET1;
+    slots["饰品2"] = EQUIPMENT_SLOT_TRINKET2;
+    slots["背部"] = EQUIPMENT_SLOT_BACK;
+    slots["主手"] = EQUIPMENT_SLOT_MAINHAND;
+    slots["副手"] = EQUIPMENT_SLOT_OFFHAND;
+    slots["远程武器栏位"] = EQUIPMENT_SLOT_RANGED;
+    slots["圣物"] = EQUIPMENT_SLOT_TABARD;
 
-    skills["first aid"] = SKILL_FIRST_AID;
-    skills["fishing"] = SKILL_FISHING;
-    skills["cooking"] = SKILL_COOKING;
-    skills["alchemy"] = SKILL_ALCHEMY;
-    skills["enchanting"] = SKILL_ENCHANTING;
-    skills["engineering"] = SKILL_ENGINEERING;
-    skills["leatherworking"] = SKILL_LEATHERWORKING;
-    skills["blacksmithing"] = SKILL_BLACKSMITHING;
-    skills["tailoring"] = SKILL_TAILORING;
-    skills["herbalism"] = SKILL_HERBALISM;
-    skills["mining"] = SKILL_MINING;
-    skills["skinning"] = SKILL_SKINNING;
-    skills["jewelcrafting"] = SKILL_JEWELCRAFTING;
+    skills["急救"] = SKILL_FIRST_AID;
+    skills["钓鱼"] = SKILL_FISHING;
+    skills["烹饪"] = SKILL_COOKING;
+    skills["炼金术"] = SKILL_ALCHEMY;
+    skills["附魔"] = SKILL_ENCHANTING;
+    skills["工程"] = SKILL_ENGINEERING;
+    skills["制皮"] = SKILL_LEATHERWORKING;
+    skills["锻造"] = SKILL_BLACKSMITHING;
+    skills["裁缝"] = SKILL_TAILORING;
+    skills["草药学"] = SKILL_HERBALISM;
+    skills["采矿"] = SKILL_MINING;
+    skills["剥皮"] = SKILL_SKINNING;
+    skills["珠宝加工"] = SKILL_JEWELCRAFTING;
 
-    chats["party"] = CHAT_MSG_PARTY;
-    chats["p"] = CHAT_MSG_PARTY;
-    chats["guild"] = CHAT_MSG_GUILD;
-    chats["g"] = CHAT_MSG_GUILD;
-    chats["raid"] = CHAT_MSG_RAID;
-    chats["r"] = CHAT_MSG_RAID;
-    chats["whisper"] = CHAT_MSG_WHISPER;
-    chats["w"] = CHAT_MSG_WHISPER;
+    chats["队伍"] = CHAT_MSG_PARTY;
+    chats["队伍"] = CHAT_MSG_PARTY;
+    chats["工会"] = CHAT_MSG_GUILD;
+    chats["工会"] = CHAT_MSG_GUILD;
+    chats["副本"] = CHAT_MSG_RAID;
+    chats["副本"] = CHAT_MSG_RAID;
+    chats["私聊"] = CHAT_MSG_WHISPER;
+    chats["私聊"] = CHAT_MSG_WHISPER;
 
-    classes[CLASS_DRUID] = "druid";
-    specs[CLASS_DRUID][0] = "balance";
-    specs[CLASS_DRUID][1] = "feral combat";
-    specs[CLASS_DRUID][2] = "restoration";
+    classes[CLASS_DRUID] = "德鲁伊";
+    specs[CLASS_DRUID][0] = "鸟德";
+    specs[CLASS_DRUID][1] = "野德";
+    specs[CLASS_DRUID][2] = "树德";
 
-    classes[CLASS_HUNTER] = "hunter";
-    specs[CLASS_HUNTER][0] = "beast mastery";
-    specs[CLASS_HUNTER][1] = "marksmanship";
-    specs[CLASS_HUNTER][2] = "survival";
+    classes[CLASS_HUNTER] = "猎人";
+    specs[CLASS_HUNTER][0] = "兽王猎";
+    specs[CLASS_HUNTER][1] = "射击猎";
+    specs[CLASS_HUNTER][2] = "生存猎";
 
-    classes[CLASS_MAGE] = "mage";
-    specs[CLASS_MAGE][0] = "arcane";
-    specs[CLASS_MAGE][1] = "fire";
-    specs[CLASS_MAGE][2] = "frost";
+    classes[CLASS_MAGE] = "法师";
+    specs[CLASS_MAGE][0] = "奥法";
+    specs[CLASS_MAGE][1] = "火法";
+    specs[CLASS_MAGE][2] = "冰法";
 
-    classes[CLASS_PALADIN] = "paladin";
-    specs[CLASS_PALADIN][0] = "holy";
-    specs[CLASS_PALADIN][1] = "protection";
-    specs[CLASS_PALADIN][2] = "retribution";
+    classes[CLASS_PALADIN] = "圣骑";
+    specs[CLASS_PALADIN][0] = "奶骑";
+    specs[CLASS_PALADIN][1] = "防骑";
+    specs[CLASS_PALADIN][2] = "惩戒骑";
 
-    classes[CLASS_PRIEST] = "priest";
-    specs[CLASS_PRIEST][0] = "discipline";
-    specs[CLASS_PRIEST][1] = "holy";
-    specs[CLASS_PRIEST][2] = "shadow";
+    classes[CLASS_PRIEST] = "牧师";
+    specs[CLASS_PRIEST][0] = "戒律牧";
+    specs[CLASS_PRIEST][1] = "神牧";
+    specs[CLASS_PRIEST][2] = "暗牧";
 
-    classes[CLASS_ROGUE] = "rogue";
-    specs[CLASS_ROGUE][0] = "assasination";
-    specs[CLASS_ROGUE][1] = "combat";
-    specs[CLASS_ROGUE][2] = "subtlety";
+    classes[CLASS_ROGUE] = "盗贼";
+    specs[CLASS_ROGUE][0] = "刺杀贼";
+    specs[CLASS_ROGUE][1] = "战斗贼";
+    specs[CLASS_ROGUE][2] = "敏锐贼";
 
-    classes[CLASS_SHAMAN] = "shaman";
-    specs[CLASS_SHAMAN][0] = "elemental";
-    specs[CLASS_SHAMAN][1] = "enhancement";
-    specs[CLASS_SHAMAN][2] = "restoration";
+    classes[CLASS_SHAMAN] = "萨满";
+    specs[CLASS_SHAMAN][0] = "元素萨";
+    specs[CLASS_SHAMAN][1] = "增强萨";
+    specs[CLASS_SHAMAN][2] = "奶萨";
 
-    classes[CLASS_WARLOCK] = "warlock";
-    specs[CLASS_WARLOCK][0] = "affliction";
-    specs[CLASS_WARLOCK][1] = "demonology";
-    specs[CLASS_WARLOCK][2] = "destruction";
+    classes[CLASS_WARLOCK] = "术士";
+    specs[CLASS_WARLOCK][0] = "痛苦术";
+    specs[CLASS_WARLOCK][1] = "恶魔术";
+    specs[CLASS_WARLOCK][2] = "毁灭术";
 
-    classes[CLASS_WARRIOR] = "warrior";
-    specs[CLASS_WARRIOR][0] = "arms";
-    specs[CLASS_WARRIOR][1] = "fury";
-    specs[CLASS_WARRIOR][2] = "protection";
+    classes[CLASS_WARRIOR] = "战士";
+    specs[CLASS_WARRIOR][0] = "武器战";
+    specs[CLASS_WARRIOR][1] = "狂暴战";
+    specs[CLASS_WARRIOR][2] = "防战";
 
-    classes[CLASS_DEATH_KNIGHT] = "dk";
-    specs[CLASS_DEATH_KNIGHT][0] = "blood";
-    specs[CLASS_DEATH_KNIGHT][1] = "frost";
-    specs[CLASS_DEATH_KNIGHT][2] = "unholy";
+    classes[CLASS_DEATH_KNIGHT] = "死骑";
+    specs[CLASS_DEATH_KNIGHT][0] = "血dk";
+    specs[CLASS_DEATH_KNIGHT][1] = "冰霜dk";
+    specs[CLASS_DEATH_KNIGHT][2] = "邪DK";
 
-    races[RACE_DWARF] = "Dwarf";
-    races[RACE_GNOME] = "Gnome";
-    races[RACE_HUMAN] = "Human";
-    races[RACE_NIGHTELF] = "Night Elf";
-    races[RACE_ORC] = "Orc";
-    races[RACE_TAUREN] = "Tauren";
-    races[RACE_TROLL] = "Troll";
-    races[RACE_UNDEAD_PLAYER] = "Undead";
-    races[RACE_BLOODELF] = "Blood Elf";
-    races[RACE_DRAENEI] = "Draenei";
+    races[RACE_DWARF] = "侏儒";
+    races[RACE_GNOME] = "侏儒";
+    races[RACE_HUMAN] = "人类";
+    races[RACE_NIGHTELF] = "暗夜精灵";
+    races[RACE_ORC] = "兽人";
+    races[RACE_TAUREN] = "牛头人";
+    races[RACE_TROLL] = "巨魔";
+    races[RACE_UNDEAD_PLAYER] = "亡灵";
+    races[RACE_BLOODELF] = "血精灵";
+    races[RACE_DRAENEI] = "德莱尼";
 }
 
 std::string const ChatHelper::formatMoney(uint32 copper)
@@ -352,7 +352,7 @@ std::string const ChatHelper::FormatQuest(Quest const* quest)
 {
     if (!quest)
     {
-        return "Invalid quest";
+        return "无效任务";
     }
 
     std::ostringstream out;

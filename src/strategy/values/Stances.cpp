@@ -255,12 +255,12 @@ bool SetStanceAction::Execute(Event event)
         std::ostringstream str;
         str << "Invalid stance: |cffff0000" << stance;
         botAI->TellMaster(str);
-        botAI->TellMaster("Please set to any of:|cffffffff near (default), tank, turnback, behind");
+        botAI->TellMaster("请设置为以下任意一种：|cffffffff near (默认), tank, turnback, behind");
         return false;
     }
 
     std::ostringstream str;
-    str << "Stance set to: " << stance;
+    str << "姿态设置为: " << stance;
     botAI->TellMaster(str);
     return true;
 }

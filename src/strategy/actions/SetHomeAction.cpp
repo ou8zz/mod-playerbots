@@ -30,14 +30,14 @@ bool SetHomeAction::Execute(Event event)
             {
                 Creature* creature = botAI->GetCreature(selection);
                 bot->GetSession()->SendBindPoint(creature);
-                botAI->TellMaster("This inn is my new home");
+                botAI->TellMaster("这个旅馆是我的新家");
                 return true;
             }
             else
             {
                 Creature* creature = botAI->GetCreature(selection);
                 bot->GetSession()->SendBindPoint(creature);
-                botAI->TellMaster("This inn is my new home");
+                botAI->TellMaster("这个旅馆是我的新家");
                 return true;
             }
         }
@@ -50,7 +50,7 @@ bool SetHomeAction::Execute(Event event)
             continue;
 
         bot->GetSession()->SendBindPoint(unit);
-        botAI->TellMaster("This inn is my new home");
+        botAI->TellMaster("这个旅馆是我的新家");
         return true;
     }
 

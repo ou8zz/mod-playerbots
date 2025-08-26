@@ -16,9 +16,9 @@ bool OutfitAction::Execute(Event event)
     if (param == "?")
     {
         List();
-        botAI->TellMaster("outfit <name> +[item] to add items");
-        botAI->TellMaster("outfit <name> -[item] to remove items");
-        botAI->TellMaster("outfit <name> equip/replace to equip items");
+        botAI->TellMaster("outfit <名称> +[物品] 添加物品");
+        botAI->TellMaster("outfit <名称> -[物品] 移除物品");
+        botAI->TellMaster("outfit <名称> 装备/替换 装备物品");
     }
     else
     {

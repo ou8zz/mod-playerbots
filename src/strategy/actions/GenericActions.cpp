@@ -114,7 +114,7 @@ bool TogglePetSpellAutoCastAction::Execute(Event event)
 
     // Debug message if pet spells have been toggled and debug is enabled
     if (toggled && sPlayerbotAIConfig->petChatCommandDebug == 1)
-        botAI->TellMaster("Pet autocast spells have been toggled.");
+        botAI->TellMaster("宠物自动施法已切换。");
 
     return toggled;
 }
@@ -222,7 +222,7 @@ bool SetPetStanceAction::Execute(Event /*event*/)
 
     // If debug is enabled in config, inform the master of the new stance
     if (sPlayerbotAIConfig->petChatCommandDebug == 1)
-        botAI->TellMaster("Pet stance set to " + stanceText + " (applied to all pets/guardians).");
+        botAI->TellMaster("宠物姿态设置为 " + stanceText + " （应用于所有宠物/守护者）。");
 
     return true;
 }

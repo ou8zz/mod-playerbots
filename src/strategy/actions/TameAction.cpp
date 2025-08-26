@@ -165,7 +165,7 @@ bool TameAction::Execute(Event event)
         }
         else
         {
-            botAI->TellMaster("Pet changed and initialized!");
+            botAI->TellMaster("宠物已更换并初始化！");
         }
     }
 
@@ -385,8 +385,8 @@ bool TameAction::RenamePet(const std::string& newName)
     bot->GetSession()->SendPetNameQuery(pet->GetGUID(), pet->GetEntry());
 
     // Notify the master about the rename and give a tip to update the client name display
-    botAI->TellMaster("Your pet has been renamed to " + normalized + "!");
-    botAI->TellMaster("If you do not see the new name, please dismiss and recall your pet.");
+    botAI->TellMaster("你的宠物已重命名为" + normalized + "！");
+    botAI->TellMaster("如果你看不到新名字，请解散并重新召唤你的宠物。");
 
     // Remove the current pet and (re-)cast Call Pet spell if the bot is a hunter
     bot->RemovePet(nullptr, PET_SAVE_AS_CURRENT, true);
@@ -488,7 +488,7 @@ bool TameAction::AbandonPet()
         // Remove the pet from the bot and mark it as deleted in the database
         bot->RemovePet(pet, PET_SAVE_AS_DELETED);
         // Inform the bot's master/player that the pet was abandoned
-        botAI->TellMaster("Your pet has been abandoned.");
+        botAI->TellMaster("你的宠物已被放弃。");
         return true;
     }
     else

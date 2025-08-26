@@ -68,8 +68,8 @@ bool LootStrategyAction::Execute(Event event)
                 if (ItemTemplate const* proto = sObjectMgr->GetItemTemplate(itemid))
                 {
                     std::ostringstream out;
-                    out << (StoreLootAction::IsLootAllowed(itemid, botAI) ? "|cFF000000Will loot "
-                                                                          : "|c00FF0000Won't loot ")
+                    out << (StoreLootAction::IsLootAllowed(itemid, botAI) ? "|cFF000000将拾取 "
+                                                                          : "|c00FF0000不会拾取 ")
                         << ChatHelper::FormatItem(proto);
                     botAI->TellMaster(out.str());
                 }
@@ -80,12 +80,12 @@ bool LootStrategyAction::Execute(Event event)
                 if (j != alwaysLootItems.end())
                     alwaysLootItems.erase(j);
 
-                botAI->TellMaster("Item(s) removed from always loot list");
+                botAI->TellMaster("物品已从始终拾取列表中移除");
             }
             else
             {
                 alwaysLootItems.insert(itemid);
-                botAI->TellMaster("Item(s) added to always loot list");
+                botAI->TellMaster("物品已添加到始终拾取列表");
             }
         }
     }

@@ -1,105 +1,121 @@
 ##################################################
-# PLAYERBOTS CONFIGURATION FILE                  #
+# PLAYERBOTS 配置文件                            #
 ##################################################
 
 # Overview
 # "Randombot": randomly generated bots that log in separately from players and populate the world. Depending on settings, randombots may automatically grind, quest, and upgrade equipment and can be invited to groups and given commands.
 # "Altbot": characters created on player accounts, which may be logged in by the player and invited to groups and given commands like randombots. Depending on settings, altbots can be limited to characters on the active player's account or in the active player's guild.
 # Information about commands to control bots and set their strategies can be found on the wiki at https://github.com/liyunfan1223/mod-playerbots/wiki/Playerbot-Commands.
+# 概述
+# "Randombot": 随机生成的机器人，它们独立于玩家登录并填充世界。根据设置，随机机器人可以自动刷怪、做任务和升级装备，并且可以被邀请到队伍中并接受命令。
+# "Altbot": 在玩家账户上创建的角色，可以像随机机器人一样被登录并邀请到队伍中并接受命令。根据设置，alt机器人可以限制为仅限活动玩家账户中的角色或活动玩家公会中的角色。
+# 关于控制机器人和设置其策略的命令信息可以在wiki上找到 https://github.com/liyunfan1223/mod-playerbots/wiki/Playerbot-Commands。
 
 ####################################################################################################
-# SECTION INDEX
-#   GENERAL SETTINGS
-#    PLAYERBOTS SETTINGS
-#        GENERAL
-#        SUMMON OPTIONS
-#        MOUNT
-#        GEAR
-#        LOOTING
-#        TIMERS
-#        DISTANCES
-#        THRESHOLDS
-#        QUESTS
-#        COMBAT
-#        CHEATS
-#        SPELLS
-#        FLIGHTPATH
-#    RANDOMBOT-SPECIFIC SETTINGS
-#        GENERAL
-#        LEVELS
-#        GEAR
-#        QUESTS
-#        ACTIVITIES
-#        SPELLS
-#        STRATEGIES
-#        RPG STRATEGY
-#        TELEPORTS
-#        BATTLEGROUND & ARENA & PVP
-#        INTERVALS
-#    PREMADE SPECS
-#        INFORMATION
-#        WARRIOR
-#        PALADIN
-#        HUNTER
-#        ROGUE
-#        PRIEST
-#        DEATHKNIGHT
-#        SHAMAN
-#        MAGE
-#        WARLOCK
-#        DRUID
-#    RANDOMBOT DEFAULT TALENT SPECS
-#        WARRIOR
-#        PALADIN
-#        HUNTER
-#        ROGUE
-#        PRIEST
-#        DEATHKNIGHT
-#        SHAMAN
-#        MAGE
-#        WARLOCK
-#        DRUID
-#    PLAYERBOTS SYSTEM SETTINGS
-#        DATABASE & CONNECTIONS
-#        DEBUG
-#        CHAT SETTINGS
-#        LOGS
-#    DEPRECIATED (TEMPORARY)
+# 章节索引
+#   通用设置
+#    PLAYERBOTS 设置
+#        通用
+#        召唤选项
+#        坐骑
+#        装备
+#        拾取
+#        时间
+#        距离
+#        阈值
+#        任务
+#        战斗
+#        作弊
+#        法术
+#        飞行路线
+#    随机机器人专用设置
+#        通用
+#        等级
+#        装备
+#        任务
+#        活动
+#        法术
+#        策略
+#        RPG 策略
+#        传送
+#        战场 & 竞技场 & PvP
+#        间隔
+#    预设天赋
+#        信息
+#        战士
+#        圣骑士
+#        猎人
+#        盗贼
+#        牧师
+#        死亡骑士
+#        萨满
+#        法师
+#        术士
+#        德鲁伊
+#    随机机器人默认天赋规格
+#        战士
+#        圣骑士
+#        猎人
+#        盗贼
+#        牧师
+#        死亡骑士
+#        萨满
+#        法师
+#        术士
+#        德鲁伊
+#    PLAYERBOTS 系统设置
+#        数据库 & 连接
+#        调试
+#        聊天设置
+#        日志
+#    已弃用（临时）
 #
 #
 #
 ####################################################################################################
+
 
 ###################################
 #                                 #
-# GENERAL SETTINGS                #
+# GENERAL SETTINGS   通用设置      #
 #                                 #
 ###################################
 
 ####################################################################################################
 
 # Enable or disable Playerbots module
+# 启用或禁用 Playerbots 模块
 AiPlayerbot.Enabled = 1
 
 # Enable randombot system
+# 启用随机机器人系统
 AiPlayerbot.RandomBotAutologin = 1
 
 # Randombot count
-AiPlayerbot.MinRandomBots = 500
-AiPlayerbot.MaxRandomBots = 500
+# 随机机器人数量
+AiPlayerbot.MinRandomBots = 330
+AiPlayerbot.MaxRandomBots = 440
 
 # Randombot accounts
 # If you are not using any expansion at all, you may have to set this manually, in which case please ensure that RandomBotAccountCount is at least greater than (MaxRandomBots / 10 + AddClassAccountPoolSize)
 # Default: 0 (automatic)
+# 随机机器人账户
+# 如果您根本没有使用任何资料片，您可能需要手动设置此选项，在这种情况下请确保 RandomBotAccountCount 至少大于 (MaxRandomBots / 10 + AddClassAccountPoolSize)
+# 默认值: 0 (自动)
 AiPlayerbot.RandomBotAccountCount = 0
 
 # Delete all randombot accounts
 # To apply this, set the number to 1 and run the Worldserver. Once deletion is complete, if you would like to recreate randombots, set the number back to 0 and rerun the Worldserver.
+# 删除所有随机机器人账户
+# 要应用此设置，请将数字设置为 1 并运行 Worldserver。一旦删除完成，如果您想重新创建随机机器人，请将数字改回 0 并重新运行 Worldserver。
 AiPlayerbot.DeleteRandomBotAccounts = 0
 
 # Disable randombots when no real players are logged in
 # Default: 0 (randombots will login when server starts)
 # If enabled, randombots will only log in 30 seconds (default) after a real player logs in, and will log out 300 seconds (default) after all real players log out
+# 当没有真实玩家登录时禁用随机机器人
+# 默认值: 0 (服务器启动时随机机器人将登录)
+# 如果启用，随机机器人只会在真实玩家登录后 30 秒（默认）登录，并在所有真实玩家登出后 300 秒（默认）登出
 AiPlayerbot.DisabledWithoutRealPlayer = 0
 AiPlayerbot.DisabledWithoutRealPlayerLoginDelay = 30
 AiPlayerbot.DisabledWithoutRealPlayerLogoutDelay = 300
@@ -115,78 +131,78 @@ AiPlayerbot.DisabledWithoutRealPlayerLogoutDelay = 300
 ####################################################################################################
 
 ####################################################################################################
-# GENERAL
+# 通用
 #
 #
 
-# The maximum number of bots that a player can control simultaneously
+# 玩家可以同时控制的机器人最大数量
 AiPlayerbot.MaxAddedBots = 40
 
-# Enable/Disable creating bots by addclass command (0 = GM only, 1 = enabled)
-# Default: 1 (enabled)
+# 启用/禁用通过addclass命令创建机器人 (0 = 仅限GM, 1 = 启用)
+# 默认值: 1 (启用)
 AiPlayerbot.AddClassCommand = 1
 
-# Set the addclass command account pool size
+# 设置addclass命令的账户池大小
 AiPlayerbot.AddClassAccountPoolSize = 50
 
-# Bot group invitation permission level (0 = GM only, 1 = accept based on level, 2 = always accept)
-# Default: 1 (accept based on level)
+# 机器人队伍邀请权限等级 (0 = 仅限GM, 1 = 根据等级接受, 2 = 总是接受)
+# 默认值: 1 (根据等级接受)
 AiPlayerbot.GroupInvitationPermission = 1
 
-# Keep alt bots in the party even when the master leaves
-# 0 = disabled (default behavior)
-# 1 = enabled (prevents bots from automatically leaving the group)
+# 即使队长离开也保持alt机器人在队伍中
+# 0 = 禁用 (默认行为)
+# 1 = 启用 (防止机器人自动离开队伍)
 AiPlayerbot.KeepAltsInGroup = 0
 
-# Auto-login all player alts as altbots on player login
+# 玩家登录时自动将所有玩家的alt角色作为alt机器人登录
 AiPlayerbot.BotAutologin = 0
 
-# Allow/deny inviting altbots from the player's account
+# 允许/拒绝邀请玩家账户中的alt机器人
 AiPlayerbot.AllowAccountBots = 1
 
-# Allow/deny inviting altbots in the player's guild
+# 允许/拒绝邀请玩家公会中的alt机器人
 AiPlayerbot.AllowGuildBots = 1
 
-# Allow linking accounts for shared altbot control
+# 允许链接账户以共享alt机器人控制
 AiPlayerbot.AllowTrustedAccountBots = 1
 
-# Randombots will create guilds with nearby randombots
-# Note: currently, randombots will not invite more bots after a guild is created (i.e., randombot guilds will have only the 10 initial randombots needed to sign the charter)
-# Default: 0 (disabled)
+# 随机机器人将与附近的随机机器人创建公会
+# 注意: 目前，公会创建后随机机器人不会邀请更多机器人（即，随机机器人公会将只有签署章程所需的10个初始随机机器人）
+# 默认值: 0 (禁用)
 AiPlayerbot.RandomBotGuildNearby = 0
 
-# Number of guilds created by randombots
+# 随机机器人创建的公会数量
 AiPlayerbot.RandomBotGuildCount = 20
 
-# Delete all randombot guilds if set to 1
+# 如果设置为1则删除所有随机机器人公会
 AiPlayerbot.DeleteRandomBotGuilds = 0
 
-# Randombots will invite players to groups/raids/guilds
+# 随机机器人将邀请玩家加入队伍/团队/公会
 AiPlayerbot.RandomBotInvitePlayer = 0
 
-# Bots will chat in say/guild when they invite other bots to groups/raids/guilds
+# 机器人在邀请其他机器人加入队伍/团队/公会时会在说/公会频道聊天
 AiPlayerbot.InviteChat = 0
 
-# Bots will be automatically summoned to the player when they accept a group invitation
+# 当玩家接受队伍邀请时机器人将被自动召唤到玩家身边
 AiPlayerbot.SummonWhenGroup = 1
 
-# Player can be activated as a bot (selfbot)
-# Selfbot permission level (0 = disabled, 1 = GM only (default), 2 = all players, 3 = activate on login)
+# 玩家可以被激活为机器人（selfbot）
+# Selfbot权限等级 (0 = 禁用, 1 = 仅限GM (默认), 2 = 所有玩家, 3 = 登录时激活)
 AiPlayerbot.SelfBotLevel = 1
 
-# Give free food to bots
-# Default: 1 (enabled)
+# 给机器人提供免费食物
+# 默认值: 1 (启用)
 AiPlayerbot.FreeFood = 1
 
-# Non-GM player can only use init=auto to initialize bots based on their own level and gearscore
-# Default: 0 (non-GM player can use any intialization commands)
+# 非GM玩家只能使用init=auto根据自己的等级和装备分数初始化机器人
+# 默认值: 0 (非GM玩家可以使用任何初始化命令)
 AiPlayerbot.AutoInitOnly = 0
 
-# The upper limit ratio of bot equipment level for init=auto
-# Default: 1.0 (same with the player)
+# 使用init=auto时机器人装备等级的上限比例
+# 默认值: 1.0 (与玩家相同)
 AiPlayerbot.AutoInitEquipLevelLimitRatio = 1.0
 
-# Bot automatically trains spells when talking to trainer (yes = train all available spells as long as the bot has the money, free = auto trains with no money cost, no = only list spells)
+# 与训练师交谈时机器人自动学习法术 (yes = 只要机器人有钱就学习所有可用法术, free = 自动学习无需费用, no = 仅列出法术)
 AiPlayerbot.AutoTrainSpells = yes
 
 #
@@ -195,28 +211,28 @@ AiPlayerbot.AutoTrainSpells = yes
 ####################################################################################################
 
 ####################################################################################################
-# SUMMON OPTIONS
+# 召唤选项
 #
 #
 
-# Enable/Disable summoning bots when the master is in combat
-# Default: 1 (enabled)
+# 启用/禁用当主人在战斗中时召唤机器人
+# 默认值: 1 (启用)
 AiPlayerbot.AllowSummonInCombat = 1
 
-# Enable/Disable summoning bots when the master is dead
-# Default: 1 (enabled)
+# 启用/禁用当主人死亡时召唤机器人
+# 默认值: 1 (启用)
 AiPlayerbot.AllowSummonWhenMasterIsDead = 1
 
-# Enable/Disable summoning bots when they are dead (0 = only when the bots are ghosts, 1 = always)
-# Default: 1 (always)
+# 启用/禁用当机器人死亡时召唤机器人 (0 = 仅当机器人为灵魂状态时, 1 = 总是)
+# 默认值: 1 (总是)
 AiPlayerbot.AllowSummonWhenBotIsDead = 1
 
-# Enable/Disable reviving bots when summoning them (0 = disabled, 1 = disabled in combat, 2 = enabled)
-# Default: 1 (disabled in combat)
+# 启用/禁用召唤机器人时复活机器人 (0 = 禁用, 1 = 战斗中禁用, 2 = 启用)
+# 默认值: 1 (战斗中禁用)
 AiPlayerbot.ReviveBotWhenSummoned = 1
 
-# Enable/Disable bots repairing gear when summoned
-# Default: 1 (enabled)
+# 启用/禁用召唤机器人时机器人修理装备
+# 默认值: 1 (启用)
 AiPlayerbot.BotRepairWhenSummon = 1
 
 #
@@ -225,28 +241,28 @@ AiPlayerbot.BotRepairWhenSummon = 1
 ####################################################################################################
 
 ####################################################################################################
-# MOUNT
+# 坐骑
 #
 #
 
-# Defines at what level a bot will naturally use its 60% ground mount
-# Note: was level 20 during WotLK, 30 during TBC, 40 during Vanilla
-# Default: 20
+# 定义机器人自然使用其60%地面坐骑的等级
+# 注意: 在WotLK期间是20级, TBC期间是30级, Vanilla期间是40级
+# 默认值: 20
 AiPlayerbot.UseGroundMountAtMinLevel = 20
 
-# Defines at what level a bot will naturally use its 100% fast ground mount
-# Note: was level 40 during WotLK, 60 during Vanilla
-# Default: 40
+# 定义机器人自然使用其100%快速地面坐骑的等级
+# 注意: 在WotLK期间是40级, Vanilla期间是60级
+# 默认值: 40
 AiPlayerbot.UseFastGroundMountAtMinLevel = 40
 
-# Defines at what level a bot will naturally use its 150% flying mount
-# Note: was level 60 during WotLK, 70 during TBC
-# Default: 60
+# 定义机器人自然使用其150%飞行坐骑的等级
+# 注意: 在WotLK期间是60级, TBC期间是70级
+# 默认值: 60
 AiPlayerbot.UseFlyMountAtMinLevel = 60
 
-# Defines at what level a bot will naturally use its 280% fast flying mount
-# Note: was level 70 during WotLK and TBC
-# Default: 70
+# 定义机器人自然使用其280%快速飞行坐骑的等级
+# 注意: 在WotLK和TBC期间是70级
+# 默认值: 70
 AiPlayerbot.UseFastFlyMountAtMinLevel = 70
 
 #
@@ -255,23 +271,23 @@ AiPlayerbot.UseFastFlyMountAtMinLevel = 70
 ####################################################################################################
 
 ####################################################################################################
-# GEAR
+# 装备
 #
 #
 
-# Show helmet and cloak on randombots (reset required)
+# 在随机机器人上显示头盔和披风（需要重置）
 AiPlayerbot.RandomBotShowHelmet = 1
 AiPlayerbot.RandomBotShowCloak = 1
 
-# Randombots and altbots automatically equip upgrades (bots will equip any item obtained from looting or a quest if they are sufficient upgrades)
-# Default: 1 (enabled)
+# 随机机器人和alt机器人自动装备升级（机器人会装备通过拾取或任务获得的任何物品，如果是足够的升级）
+# 默认值: 1 (启用)
 AiPlayerbot.AutoEquipUpgradeLoot = 1
 
-# Threshold for auto equipping upgrades
-# Default: 1.1 (Equip when the equipment score of the new item is 1.1 times higher than the currently equipped item)
+# 自动装备升级的阈值
+# 默认值: 1.1 (当新物品的装备分数比当前装备物品高1.1倍时装备)
 AiPlayerbot.EquipUpgradeThreshold = 1.1
 
-# Two rounds of equipment initialization to create more suitable gear
+# 两轮装备初始化以创建更合适的装备
 AiPlayerbot.TwoRoundsGearInit = 0
 
 #
@@ -280,19 +296,19 @@ AiPlayerbot.TwoRoundsGearInit = 0
 ####################################################################################################
 
 ####################################################################################################
-# LOOTING
+# 拾取
 #
 #
 
-# Bots will say information about items when collecting them
+# 机器人在收集物品时会说出物品信息
 AiPlayerbot.SayWhenCollectingItems = 1
 
-# Bots keep looting when loot system is set to free for all
-# Default: 0 (disabled)
+# 当拾取系统设置为自由拾取时，机器人继续拾取
+# 默认值: 0 (禁用)
 AiPlayerbot.FreeMethodLoot = 0
 
-# Bots' loot roll level (0 = pass, 1 = greed, 2 = need)
-# Default: 1 (greed)
+# 机器人的拾取掷骰等级 (0 = 放弃, 1 = 贪婪, 2 = 需要)
+# 默认值: 1 (贪婪)
 AiPlayerbot.LootRollLevel = 1
 
 #
@@ -301,52 +317,52 @@ AiPlayerbot.LootRollLevel = 1
 ####################################################################################################
 
 ####################################################################################################
-# TIMERS
+# 时间
 #
 #
 
-# Max AI iterations per tick
+# 每次执行的最大AI迭代次数
 AiPlayerbot.IterationsPerTick = 10
 
-# Delay between two short-time spells cast
+# 两次短时间法术施放之间的延迟
 AiPlayerbot.GlobalCooldown = 500
 
-# Max wait time when moving
+# 移动时的最大等待时间
 AiPlayerbot.MaxWaitForMove = 5000
 
-# Disable use of MoveSplinePath for bot movement, will result in more erratic bot movement but means stun/snare/root/etc will work on bots (they wont reliably work when MoveSplinePath is enabled, though slowing effects still work ok)
-# Default: 0 - MoveSplinePath enabled
-#          1 - MoveSplinePath disabled in BG/Arena only
-#          2 - MoveSplinePath disabled everywhere
+# 禁用机器人的MoveSplinePath移动，这将导致更不规律的机器人移动，但意味着眩晕/减速/定身等效果将对机器人起作用（当启用MoveSplinePath时它们不会可靠地起作用，尽管减速效果仍然可以正常工作）
+# 默认值: 0 - 启用MoveSplinePath
+#          1 - 仅在BG/Arena中禁用MoveSplinePath
+#          2 - 在所有地方禁用MoveSplinePath
 AiPlayerbot.DisableMoveSplinePath = 0
 
-# Max search time for movement (higher for better movement on slopes)
-# Default: 3
+# 移动的最大搜索时间（在斜坡上移动时更高以获得更好的效果）
+# 默认值: 3
 AiPlayerbot.MaxMovementSearchTime = 3
 
-# Action expiration time
+# 动作过期时间
 AiPlayerbot.ExpireActionTime = 5000
 
-# Max dispel auras duration
+# 最大驱散光环持续时间
 AiPlayerbot.DispelAuraDuration = 700
 
-# Delay between two bot actions
+# 两个机器人动作之间的延迟
 AiPlayerbot.ReactDelay = 100
 
-# Dynamically adjust react delay for bots in different status to reduce server lags
+# 为不同状态的机器人动态调整反应延迟以减少服务器延迟
 AiPlayerbot.DynamicReactDelay = 1
 
-# Inactivity delay
+# 无活动延迟
 AiPlayerbot.PassiveDelay = 10000
 
-# Minimum delay between repeating actions (chat messages, emotes etc)
+# 重复动作的最小延迟（聊天消息、表情等）
 AiPlayerbot.RepeatDelay = 2000
 
-# Delay timers
+# 延迟计时器
 AiPlayerbot.ErrorDelay = 100
 AiPlayerbot.RpgDelay = 10000
 AiPlayerbot.SitDelay = 20000
-# ReturnDelay has a minimum value of 2000 - lower values will cause a crash!
+# ReturnDelay的最小值为2000 - 较低的值会导致崩溃！
 AiPlayerbot.ReturnDelay = 2000
 AiPlayerbot.LootDelay = 1000
 
@@ -356,7 +372,7 @@ AiPlayerbot.LootDelay = 1000
 ####################################################################################################
 
 ####################################################################################################
-# DISTANCES
+# 距离
 #
 #
 
@@ -384,11 +400,11 @@ AiPlayerbot.AggroDistance = 22
 ####################################################################################################
 
 ####################################################################################################
-# THRESHOLDS
+# 阈值
 #
 #
 
-# Health/Mana levels
+# 生命值/法力值等级
 AiPlayerbot.CriticalHealth = 25
 AiPlayerbot.LowHealth = 45
 AiPlayerbot.MediumHealth = 65
@@ -428,32 +444,32 @@ AiPlayerbot.DropObsoleteQuests = 1
 ####################################################################################################
 
 ####################################################################################################
-# COMBAT
+# 战斗
 #
 #
 
-# Auto add dungeon/raid strategies when entering the instance if implemented
+# 进入副本时自动添加副本/团队策略（如果已实现）
 AiPlayerbot.ApplyInstanceStrategies = 1
 
-# Enable auto avoid aoe strategy (experimental)
-# Default: 1 (enabled)
+# 启用自动避免AOE策略（实验性）
+# 默认值: 1 (启用)
 AiPlayerbot.AutoAvoidAoe = 1
 
-# Only avoid aoe spells with a radius smaller than this value
+# 仅避免半径小于此值的AOE法术
 AiPlayerbot.MaxAoeAvoidRadius = 15.0
 
-# A whitelist of aoe spell IDs that should not be avoided
+# 应该避免的AOE法术ID白名单
 AiPlayerbot.AoeAvoidSpellWhitelist = 50759,57491,13810
 
-# Enable healer bot save mana strategy
-# Default: 1 (enabled)
+# 启用治疗机器人节约法力策略
+# 默认值: 1 (启用)
 AiPlayerbot.AutoSaveMana = 1
 
-# Healer bot save mana threshold
-# Default: 60 (60%)
+# 治疗机器人节约法力阈值
+# 默认值: 60 (60%)
 AiPlayerbot.SaveManaThreshold = 60
 
-# Bots can flee from enemies
+# 机器人可以从敌人那里逃跑
 AiPlayerbot.FleeingEnabled = 1
 
 #
@@ -1799,7 +1815,7 @@ AiPlayerbot.RandomClassSpecIndex.11.3 = 3
 #                                                                           Unix/Linux)
 #        Default:     "127.0.0.1;3306;acore;acore;acore_playerbots"       - (PlayerbotDatabaseInfo)
 
-PlayerbotsDatabaseInfo = "127.0.0.1;3306;acore;acore;acore_playerbots"
+PlayerbotsDatabaseInfo = "192.168.8.198;3306;acore;kdjkeD_3Df;acore_playerbots"
 
 #
 #    PlayerbotsDatabase.WorkerThreads
