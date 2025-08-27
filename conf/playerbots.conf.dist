@@ -416,22 +416,22 @@ AiPlayerbot.HighMana = 65
 
 ####################################################################################################
 # QUESTS
+# 任务
 #
 #
-
-# Bots pick their quest rewards (yes = picks the most useful item, no = list all rewards, ask = pick useful item and lists if multiple)
+# 机器人自动选择任务奖励（yes = 选择最有用的物品，no = 列出所有奖励并询问，ask = 选择有用的物品，如果有多个则列出）
 AiPlayerbot.AutoPickReward = yes
 
-# Sync quests with player (Bots will complete quests the moment you hand them in and will not loot quest items.)
-# Default: 1 (enabled)
+# 与玩家同步任务（机器人会在你交任务的瞬间完成任务，并且不会拾取任务物品）
+# 默认值：1（启用）
 AiPlayerbot.SyncQuestWithPlayer = 1
 
-# Bots will auto-complete quests for the player when handing in bots' quests
-# Default: 0 (disabled)
+# 机器人会在为玩家交任务时自动完成任务
+# 默认值：0（禁用）
 AiPlayerbot.SyncQuestForPlayer = 0
 
-# Bots will drop obsolete quests
-# Default: 1 (enabled)
+# 机器人会丢弃过时的任务
+# 默认值：1（启用）
 AiPlayerbot.DropObsoleteQuests = 1
 
 #
@@ -526,19 +526,23 @@ AiPlayerbot.BotCheats = "food,taxi,raid"
 
 ####################################################################################################
 # FLIGHTPATH
-#
+# 飞行路径
 #
 
 # Min random delay before the 1st follower bot clicks the flight-master (ms)
+#  第一个跟随机器人点击飞行管理员之前的最小随机延迟（毫秒）
 AiPlayerbot.BotTaxiDelayMinMs = 350
 
 # Upper bound for the overall taxi delay window (ms) – larger spreads big raids
+# 整体飞行延迟窗口的上限（毫秒）– 更大的间隔适用于大型团队
 AiPlayerbot.BotTaxiDelayMaxMs = 5000
 
 # Fixed gap added per group-slot so bots never take off together (ms)
+# 每个队伍位置固定的间隔，这样机器人永远不会一起起飞（毫秒）
 AiPlayerbot.BotTaxiGapMs = 200
 
 # Extra small randomness added to each gap so launches don’t look robotic (ms)
+# 添加到每个间隔的额外小随机性，使起飞看起来不那么机械化（毫秒）
 AiPlayerbot.BotTaxiGapJitterMs = 100
 
 #
@@ -549,61 +553,83 @@ AiPlayerbot.BotTaxiGapJitterMs = 100
 #######################################
 #                                     #
 # RANDOMBOT-SPECIFIC SETTINGS  #
+# 随机机器人专用设置 
 #                                     #
 #######################################
 
 ####################################################################################################
 # GENERAL
-#
+# 常规
 #
 
 # Enable/Disable randomly generated password for randombot accounts
+# 为随机机器人账户启用/禁用随机生成的密码
 AiPlayerbot.RandomBotRandomPassword = 0
 
 # Prefix for account names to create for randombots
+# 随机机器人账户名称的前缀
 AiPlayerbot.RandomBotAccountPrefix = "rndbot"
 
 # Minimum and maximum levels for randombots
-AiPlayerbot.RandomBotMinLevel = 1
+# 随机机器人的最低和最高级别
+AiPlayerbot.RandomBotMinLevel = 60
 AiPlayerbot.RandomBotMaxLevel = 80
 
 # Sync max randombot level with max level of online players
 # Default: 0 (disabled)
+# 与在线玩家同步最大随机机器人等级
+# 默认值：0（禁用）
 AiPlayerbot.SyncLevelWithPlayers = 0
 
 # Mark many quests ≤ bot level as complete (slows down bot creation)
+# 标记许多小于或等于机器人等级的任务为完成（会减慢机器人创建速度）
 AiPlayerbot.PreQuests = 0
 
 # Enable LFG for randombots
+# 为随机机器人启用LFG
 AiPlayerbot.RandomBotJoinLfg = 1
 
 # Enable/Disable periodic online - offline of randombots to mimic the real-world scenario where not all players are online simultaneously
 # When enabled, randombots are randomly selected to go online or offline periodically from a larger set
 # Default: 0 (disabled, the set of online bots remains fixed)
+# 启用/禁用随机机器人的定期上线-下线，以模拟真实世界的场景，即并非所有玩家都同时在线
+# 启用时，定期从更大的集合中选择随机机器人上线或下线
+# 默认值：0（禁用，上线机器人的集合保持不变）
 AiPlayerbot.EnablePeriodicOnlineOffline = 0
 
 # Defines the ratio between the total number of randombots (including offline ones) and the number of randombots currently online (MaxRandomBots)
 # This setting must greater than 1.0 and only applies when EnablePeriodicOnlineOffline
 # Default: 2.0 (total number of bots is twice the number of MaxRandomBots)
+# 定义随机机器人总数（包括离线的）与当前在线的随机机器人数量（MaxRandomBots）之间的比率
+# 此设置必须大于1.0，仅在启用EnablePeriodicOnlineOffline时适用
+# 默认值：2.0（机器人的总数是MaxRandomBots的两倍）
 AiPlayerbot.PeriodicOnlineOfflineRatio = 2.0
 
 # Percentage ratio of Alliance and Horde randombots
+# 联盟和部落随机机器人的百分比比率
 AiPlayerbot.RandomBotAllianceRatio = 50
 AiPlayerbot.RandomBotHordeRatio = 50
 
 # Disable logging in of death knight bots
+# 禁用死亡骑士机器人的登录
 AiPlayerbot.DisableDeathKnightLogin = 0
 
 # Enable simulated expansion limitation for talents and glyphs
 # If enabled, limits talent trees to 5 rows plus the middle talent of the 6th row for bots until level 61 and 7 rows plus the middle talent of the 8th row for bots until level 71
 # Default: 0 (disabled)
+# 为天赋和雕文启用模拟的版本限制
+# 如果启用，会将天赋树限制为前5行加上第6行的中间天赋（适用于61级以下的机器人）和前7行加上第8行的中间天赋（适用于71级以下的机器人）
+# 默认值：0（禁用）
 AiPlayerbot.LimitTalentsExpansion = 0
 
 # Configure randombots and addClass bot trading (0: Disabled, 1: Enabled, 2: Only Buy, 3: Only Sell)
 # Default: 1 (enabled)
+# 配置随机机器人和addClass机器人的交易（0：禁用，1：启用，2：仅购买，3：仅出售）
+# 默认值：1（启用）
 AiPlayerbot.EnableRandomBotTrading = 1
 
 # Configure message prefixes which will be excluded in analysis in trade action to open trade window
+# 配置在交易动作中用于打开交易窗口而被排除在分析之外的消息前缀
 AiPlayerbot.TradeActionExcludedPrefixes = "RPLL_H_,DBMv4,{звезда} Questie,{rt1} Questie"
 
 #
