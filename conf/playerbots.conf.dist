@@ -579,7 +579,7 @@ AiPlayerbot.RandomBotMaxLevel = 80
 # Default: 0 (disabled)
 # 与在线玩家同步最大随机机器人等级
 # 默认值：0（禁用）
-AiPlayerbot.SyncLevelWithPlayers = 0
+AiPlayerbot.SyncLevelWithPlayers = 1
 
 # Mark many quests ≤ bot level as complete (slows down bot creation)
 # 标记许多小于或等于机器人等级的任务为完成（会减慢机器人创建速度）
@@ -642,32 +642,32 @@ AiPlayerbot.TradeActionExcludedPrefixes = "RPLL_H_,DBMv4,{звезда} Questie,
 #
 #
 
-# Disable randombots being generated with a random level
-# If disabled, every randombot starts on a specified level (but can still level up by killing mobs and questing)
+# 禁用随机生成的机器人使用随机等级
+# 如果禁用，每个随机机器人从指定等级开始（但仍可以通过杀怪和做任务升级）
 AiPlayerbot.DisableRandomLevels = 0
 
-# Set randombots' starting level here if "AiPlayerbot.DisableRandomLevels" enabled
+# 如果启用"AiPlayerbot.DisableRandomLevels"，在此设置随机机器人的起始等级
 AiPlayerbot.RandombotStartingLevel = 1
 
-# Chance randombot has min level on first randomize
-# Default: 0.1 (10%)
+# 随机机器人在首次随机化时具有最小等级的几率
+# 默认值：0.1（10%）
 AiPlayerbot.RandomBotMinLevelChance = 0.1
 
-# Chance randombot has max level on first randomize
-# Default 0.1 (10%)
-AiPlayerbot.RandomBotMaxLevelChance = 0.1
+# 随机机器人在首次随机化时具有最大等级的几率
+# 默认值：0.1（10%）
+AiPlayerbot.RandomBotMaxLevelChance = 0.5
 
-# Fix the level of randombots (they won't level up)
-# Default: 0 (disabled)
+# 固定随机机器人的等级（它们不会升级）
+# 默认值：0（禁用）
 AiPlayerbot.RandomBotFixedLevel = 0
 
-# Set RandomBotMaxLevel bots to RandomBotMinLevel
-# Default: 0 (disabled)
+# 将RandomBotMaxLevel等级的机器人设置为RandomBotMinLevel等级
+# 默认值：0（禁用）
 AiPlayerbot.DowngradeMaxLevelBot = 0
 
-# Set XP rate for random bots (Default: 1.0)
-# Server XP Rate * AiPlayerbot.RandomBotXPRate
-AiPlayerbot.RandomBotXPRate = 1.0
+# 设置随机机器人的经验值倍率（默认：1.0）
+# 服务器经验值倍率 * AiPlayerbot.RandomBotXPRate
+AiPlayerbot.RandomBotXPRate = 2.0
 
 #
 #
@@ -759,31 +759,31 @@ AiPlayerbot.ExcludedHunterPetFamilies = ""
 
 
 ####################################################################################################
-# ACTIVITIES
+# 活动设置
 #
 #
-# Specify percent of active bots
-# The default is 100% but will be automatically adjusted if botActiveAloneSmartScale
-# is enabled. Regardless, this value is only applied to inactive areas where no real players
-# are detected. When real players are nearby, the value is always enforced to 100%
+# 指定活跃机器人的百分比
+# 默认值是100%，但如果启用了botActiveAloneSmartScale，
+# 该值会自动调整。无论如何，这个值只应用于没有检测到真实玩家的不活跃区域。
+# 当附近有真实玩家时，该值始终强制为100%
 AiPlayerbot.BotActiveAlone = 100
 
-# Force botActiveAlone when bot is within the specified distance of a real player
+# 当机器人在真实玩家的指定距离内时，强制执行botActiveAlone
 AiPlayerbot.BotActiveAloneForceWhenInRadius = 150
 AiPlayerbot.BotActiveAloneForceWhenInZone = 1
 AiPlayerbot.BotActiveAloneForceWhenInMap = 0
 AiPlayerbot.BotActiveAloneForceWhenIsFriend = 1
 AiPlayerbot.BotActiveAloneForceWhenInGuild = 1
 
-# SmartScale (automatic scaling of percentage of active bots based on latency)
-# The default is 1. When enabled (smart) scales the 'BotActiveAlone' value.
-# (The scaling will be overruled by the BotActiveAloneForceWhen...rules)
+# 智能缩放（基于延迟自动缩放活跃机器人百分比）
+# 默认值为1。启用时（智能）会缩放'BotActiveAlone'值。
+# （缩放会被BotActiveAloneForceWhen...规则覆盖）
 #
-#   Limitfloor - when DIFF (latency) is above floor, activity scaling begins
-#   LimitCeiling - when DIFF (latency) is above ceiling, activity is 0%
+#   Limitfloor - 当延迟差高于下限时，开始活动缩放
+#   LimitCeiling - 当延迟差高于上限时，活动为0%
 #
-#   MinLevel - only apply scaling when level is above or equal to min(bot)Level
-#   MaxLevel - only apply scaling when level is lower or equal of max(bot)Level
+#   MinLevel - 仅当等级高于或等于最小（机器人）等级时应用缩放
+#   MaxLevel - 仅当等级低于或等于最大（机器人）等级时应用缩放
 #
 AiPlayerbot.botActiveAloneSmartScale = 1
 AiPlayerbot.botActiveAloneSmartScaleDiffLimitfloor = 50
@@ -824,22 +824,22 @@ AiPlayerbot.RandomBotQuestItems = "5175,5176,5177,5178,6948,11000,12382,13704,16
 #
 #
 
-# Randombots automatically learn class quest reward spells on levelup
-# Default: 0 (disabled)
+# 随机机器人在升级时自动学习职业任务奖励法术
+# 默认值：0（禁用）
 AiPlayerbot.AutoLearnQuestSpells = 0
 
-# Randombots automatically learn trainable spells on levelup
-# Default: 1 (enabled)
+# 随机机器人在升级时自动学习可训练的法术
+# 默认值：1（启用）
 AiPlayerbot.AutoLearnTrainerSpells = 1
 
-# Randombots automatically spend talent points on levelup
-# Default: 1 (enabled)
+# 随机机器人在升级时自动分配天赋点
+# 默认值：1（启用）
 AiPlayerbot.AutoPickTalents = 1
 
-# Spells every randombot will learn automatically and every altbot will learn with maintenance (54197 - cold weather flying)
+# 每个随机机器人都会自动学习的法术，每个alt机器人会通过维护学习的法术（54197 - 寒冷天气飞行）
 AiPlayerbot.RandomBotSpellIds = "54197"
 
-# ID of spell to open lootable chests
+# 打开可拾取宝箱的法术ID
 AiPlayerbot.OpenGoSpell = 6477
 
 #
@@ -1049,28 +1049,28 @@ AiPlayerbot.ZoneBracket.4197 = 79,80
 #
 #
 
-# Maps where bots can be teleported to
+# 机器人可以传送到的地图
 AiPlayerbot.RandomBotMaps = 0,1,530,571
 
-# Probabilty bots teleport to banker (city)
-# Default: 0.25
+# 机器人传送到银行家（城市）的概率
+# 默认值：0.25
 AiPlayerbot.ProbTeleToBankers = 0.25
 
-# How far randombots are teleported after death
+# 随机机器人死亡后被传送的距离
 AiPlayerbot.RandomBotTeleportDistance = 100
 
-# How many levels below the lowest-level creature in a zone, can a bot be
-# This will have no effect if AiPlayerbot.EnableNewRpgStrategy is enabled
-# Default: 1 (randombot will leave if they are more than 1 level lower)
+# 机器人可以比区域中最低等级生物低多少级
+# 如果启用了AiPlayerbot.EnableNewRpgStrategy，这将没有效果
+# 默认值：1（如果随机机器人等级低超过1级，将离开该区域）
 AiPlayerbot.RandomBotTeleLowerLevel = 1
 
-# How many levels above the highest-level creature in a zone, can a bot be
-# This will have no effect if AiPlayerbot.EnableNewRpgStrategy is enabled
-# Default: 3 (randombot will leave if they are more than 3 levels higher)
+# 机器人可以比区域中最高级生物高多少级
+# 如果启用了AiPlayerbot.EnableNewRpgStrategy，这将没有效果
+# 默认值：3（如果随机机器人等级高超过3级，将离开该区域）
 AiPlayerbot.RandomBotTeleHigherLevel = 3
 
-# Bots automatically teleport to another place for leveling on levelup
-# Default: 1 (enabled)
+# 机器人在升级时自动传送到其他地方进行升级
+# 默认值：1（启用）
 AiPlayerbot.AutoTeleportForLevel = 1
 
 #
