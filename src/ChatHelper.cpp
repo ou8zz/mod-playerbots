@@ -136,7 +136,7 @@ ChatHelper::ChatHelper(PlayerbotAI* botAI) : PlayerbotAIAware(botAI)
     specs[CLASS_MAGE][1] = "火法";
     specs[CLASS_MAGE][2] = "冰法";
 
-    classes[CLASS_PALADIN] = "圣骑";
+    classes[CLASS_PALADIN] = "圣骑士";
     specs[CLASS_PALADIN][0] = "奶骑";
     specs[CLASS_PALADIN][1] = "防骑";
     specs[CLASS_PALADIN][2] = "惩戒骑";
@@ -166,9 +166,9 @@ ChatHelper::ChatHelper(PlayerbotAI* botAI) : PlayerbotAIAware(botAI)
     specs[CLASS_WARRIOR][1] = "狂暴战";
     specs[CLASS_WARRIOR][2] = "防战";
 
-    classes[CLASS_DEATH_KNIGHT] = "死骑";
-    specs[CLASS_DEATH_KNIGHT][0] = "血dk";
-    specs[CLASS_DEATH_KNIGHT][1] = "冰霜dk";
+    classes[CLASS_DEATH_KNIGHT] = "死亡骑士";
+    specs[CLASS_DEATH_KNIGHT][0] = "血DK";
+    specs[CLASS_DEATH_KNIGHT][1] = "冰DK";
     specs[CLASS_DEATH_KNIGHT][2] = "邪DK";
 
     races[RACE_DWARF] = "侏儒";
