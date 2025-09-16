@@ -197,16 +197,16 @@ bool PlayerbotSecurity::CheckLevelFor(PlayerbotSecurityLevel level, bool silent,
     switch (realLevel)
     {
         case PLAYERBOT_SECURITY_DENY_ALL:
-            out << "I'm kind of busy now";
+            out << "我现在有点忙";
             break;
         case PLAYERBOT_SECURITY_TALK:
             switch (reason)
             {
                 case PLAYERBOT_DENY_NONE:
-                    out << "I'll do it later";
+                    out << "我稍后会做的";
                     break;
                 case PLAYERBOT_DENY_LOW_LEVEL:
-                    out << "You are too low level: |cffff0000" << (uint32)from->GetLevel() << "|cffffffff/|cff00ff00"
+                    out << "你的等级太低了: |cffff0000" << (uint32)from->GetLevel() << "|cffffffff/|cff00ff00"
                         << (uint32)bot->GetLevel();
                     break;
                 case PLAYERBOT_DENY_GEARSCORE:
@@ -215,28 +215,28 @@ bool PlayerbotSecurity::CheckLevelFor(PlayerbotSecurityLevel level, bool silent,
                     int fromGS = (int)botAI->GetEquipGearScore(from/*, false, false*/);
                     int diff = (100 * (botGS - fromGS) / botGS);
                     int req = 12 * sWorld->getIntConfig(CONFIG_MAX_PLAYER_LEVEL) / from->GetLevel();
-                    out << "Your gearscore is too low: |cffff0000" << fromGS << "|cffffffff/|cff00ff00" << botGS
+                    out << "你的装备分数太低: |cffff0000" << fromGS << "|cffffffff/|cff00ff00" << botGS
                         << " |cffff0000" << diff << "%|cffffffff/|cff00ff00" << req << "%";
                 }
                 break;
                 case PLAYERBOT_DENY_NOT_YOURS:
-                    out << "I have a master already";
+                    out << "我已经有主人了";
                     break;
                 case PLAYERBOT_DENY_IS_BOT:
-                    out << "You are a bot";
+                    out << "你是一个机器人";
                     break;
                 case PLAYERBOT_DENY_OPPOSING:
-                    out << "You are the enemy";
+                    out << "你是敌人";
                     break;
                 case PLAYERBOT_DENY_DEAD:
-                    out << "I'm dead. Will do it later";
+                    out << "我死了，稍后会做的";
                     break;
                 case PLAYERBOT_DENY_INVITE:
-                    out << "Invite me to your group first";
+                    out << "请先邀请我加入你的队伍";
                     break;
                 case PLAYERBOT_DENY_FAR:
                 {
-                    out << "You must be closer to invite me to your group. I am in ";
+                    out << "你必须靠近一点才能邀请我加入你的队伍。我现在在";
 
                     if (AreaTableEntry const* entry = sAreaTableStore.LookupEntry(bot->GetAreaId()))
                     {
@@ -245,38 +245,38 @@ bool PlayerbotSecurity::CheckLevelFor(PlayerbotSecurityLevel level, bool silent,
                 }
                 break;
                 case PLAYERBOT_DENY_FULL_GROUP:
-                    out << "I am in a full group. Will do it later";
+                    out << "我在一个满员的队伍中，稍后会做的";
                     break;
                 case PLAYERBOT_DENY_IS_LEADER:
-                    out << "I am currently leading a group. I can invite you if you want.";
+                    out << "我目前在带领一个队伍，如果你需要的话我可以邀请你";
                     break;
                 case PLAYERBOT_DENY_NOT_LEADER:
                     if (botAI->GetGroupMaster())
                     {
-                        out << "I am in a group with " << botAI->GetGroupMaster()->GetName()
-                            << ". You can ask him for invite.";
+                        out << "我和" << botAI->GetGroupMaster()->GetName()
+                            << "在一个队伍中，你可以向他请求邀请";
                     }
                     else
                     {
-                        out << "I am in a group with someone else. You can ask him for invite.";
+                        out << "我和别人在一个队伍中，你可以向他请求邀请";
                     }
                     break;
                 case PLAYERBOT_DENY_BG:
-                    out << "I am in a queue for BG. Will do it later";
+                    out << "我在战场队列中，稍后会做的";
                     break;
                 case PLAYERBOT_DENY_LFG:
-                    out << "I am in a queue for dungeon. Will do it later";
+                    out << "我在副本队列中，稍后会做的";
                     break;
                 default:
-                    out << "I can't do that";
+                    out << "我不能这样做";
                     break;
             }
             break;
         case PLAYERBOT_SECURITY_INVITE:
-            out << "Invite me to your group first";
+            out << "请先邀请我加入你的队伍";
             break;
         default:
-            out << "I can't do that";
+            out << "我不能这样做";
             break;
     }
 
