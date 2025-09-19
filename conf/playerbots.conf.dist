@@ -290,7 +290,7 @@ AiPlayerbot.FreeMethodLoot = 0
 
 # 机器人的拾取掷骰等级 (0 = 放弃, 1 = 贪婪, 2 = 需要)
 # 默认值: 1 (贪婪)
-AiPlayerbot.LootRollLevel = 2
+AiPlayerbot.LootRollLevel = 1
 
 #
 #
