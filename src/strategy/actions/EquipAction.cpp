@@ -110,7 +110,7 @@ void EquipAction::EquipItem(Item* item)
             WorldPackets::Item::AutoEquipItemSlot nicePacket(std::move(packet));
             nicePacket.Read();
             bot->GetSession()->HandleAutoEquipItemSlotOpcode(nicePacket);
-        
+
             std::ostringstream out;
             out << "装备 " << chat->FormatItem(itemProto) << " 到远程槽位";
             botAI->TellMaster(out);
@@ -123,7 +123,7 @@ void EquipAction::EquipItem(Item* item)
         bool isWeapon = (itemProto->Class == ITEM_CLASS_WEAPON);
         bool canTitanGrip = bot->CanTitanGrip();
         bool canDualWield = bot->CanDualWield();
-        
+
         bool isTwoHander = (invType == INVTYPE_2HWEAPON);
         bool isValidTGWeapon = false;
         if (canTitanGrip && isTwoHander)
@@ -208,24 +208,24 @@ void EquipAction::EquipItem(Item* item)
                     nicePacket.Read();
                     bot->GetSession()->HandleAutoEquipItemSlotOpcode(nicePacket);
                 }
-            
+
                 // Try moving old main hand weapon to offhand if beneficial
                 if (mainHandItem && mainHandCanGoOff && (!offHandItem || mainHandScore > offHandScore))
                 {
                     const ItemTemplate* oldMHProto = mainHandItem->GetTemplate();
-            
+
                     WorldPacket offhandPacket(CMSG_AUTOEQUIP_ITEM_SLOT, 2);
                     ObjectGuid oldMHGuid = mainHandItem->GetGUID();
                     offhandPacket << oldMHGuid << uint8(EQUIPMENT_SLOT_OFFHAND);
                     WorldPackets::Item::AutoEquipItemSlot nicePacket(std::move(offhandPacket));
                     nicePacket.Read();
                     bot->GetSession()->HandleAutoEquipItemSlotOpcode(nicePacket);
-            
+
                     std::ostringstream moveMsg;
                     moveMsg << "找到主手升级。移动 " << chat->FormatItem(oldMHProto) << " 到副手";
                     botAI->TellMaster(moveMsg);
                 }
-            
+
                 std::ostringstream out;
                 out << "装备 " << chat->FormatItem(itemProto) << " 到主手";
                 botAI->TellMaster(out);
