@@ -159,6 +159,9 @@ AiPlayerbot.RandomBotGuildNearby = 0
 # 随机机器人创建的公会数量
 AiPlayerbot.RandomBotGuildCount = 20
 
+# 随机机器人公会的最大成员数量（最小值硬编码为 10）
+AiPlayerbot.RandomBotGuildSizeMax = 15
+
 # 如果设置为1则删除所有随机机器人公会
 AiPlayerbot.DeleteRandomBotGuilds = 0
 
