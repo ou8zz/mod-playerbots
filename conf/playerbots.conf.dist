@@ -86,8 +86,8 @@ AiPlayerbot.Enabled = 1
 AiPlayerbot.RandomBotAutologin = 1
 
 # 随机机器人数量
-AiPlayerbot.MinRandomBots = 330
-AiPlayerbot.MaxRandomBots = 440
+AiPlayerbot.MinRandomBots = 400
+AiPlayerbot.MaxRandomBots = 500
 
 # 随机机器人账户
 # 如果您根本没有使用任何资料片，您可能需要手动设置此选项，在这种情况下请确保 RandomBotAccountCount 至少大于 (MaxRandomBots / 10 + AddClassAccountPoolSize)
@@ -690,7 +690,7 @@ AiPlayerbot.RandomBotXPRate = 2.0
 # 随机机器人装备品质限制 (1 = 普通, 2 = 优秀, 3 = 精良, 4 = 史诗, 5 = 传说)
 # 这也设置了随机机器人和替代机器人使用autogear命令能生成的最大品质装备
 # 默认值: 3 (精良)
-AiPlayerbot.RandomGearQualityLimit = 4
+AiPlayerbot.RandomGearQualityLimit = 5
 
 # 随机机器人装备物品等级(不是装备评分)限制 (0 = 无限制)
 # 经典旧世
