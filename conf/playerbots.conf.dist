@@ -86,8 +86,8 @@ AiPlayerbot.Enabled = 1
 AiPlayerbot.RandomBotAutologin = 1
 
 # 随机机器人数量
-AiPlayerbot.MinRandomBots = 400
-AiPlayerbot.MaxRandomBots = 500
+AiPlayerbot.MinRandomBots = 910
+AiPlayerbot.MaxRandomBots = 1000
 
 # 随机机器人账户
 # 如果您根本没有使用任何资料片，您可能需要手动设置此选项，在这种情况下请确保 RandomBotAccountCount 至少大于 (MaxRandomBots / 10 + AddClassAccountPoolSize)
