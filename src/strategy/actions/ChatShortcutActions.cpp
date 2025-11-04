@@ -106,6 +106,7 @@ bool FollowChatShortcutAction::Execute(Event event)
         else
             botAI->TellMaster("你离我太远了!我很快就到。");
 
+        bot->RemoveAurasWithInterruptFlags(AURA_INTERRUPT_FLAG_TELEPORTED | AURA_INTERRUPT_FLAG_CHANGE_MAP);
         bot->TeleportTo(master->GetMapId(), master->GetPositionX(), master->GetPositionY(), master->GetPositionZ(),
     master->GetOrientation()); return true;
     }

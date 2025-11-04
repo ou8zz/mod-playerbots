@@ -1,4 +1,4 @@
-#/*
+/*
  * Copyright (C) 2016+ AzerothCore <www.azerothcore.org>, released under GNU AGPL v3 license, you may redistribute it and/or modify it under version 3 of the License, or (at your option), any later version.
  */
 
@@ -78,10 +78,14 @@ UnholyDKStrategy::UnholyDKStrategy(PlayerbotAI* botAI) : GenericDKStrategy(botAI
 NextAction** UnholyDKStrategy::getDefaultActions()
 {
     return NextAction::array(
-        0, new NextAction("death and decay", ACTION_HIGH + 5),
+        0, new NextAction("army of the dead", ACTION_HIGH + 7),
+        new NextAction("death and decay", ACTION_HIGH + 5),
         new NextAction("summon gargoyle", ACTION_DEFAULT + 0.4f),
-        // new NextAction("empower rune weapon", ACTION_DEFAULT + 0.3f),
-        new NextAction("horn of winter", ACTION_DEFAULT + 0.2f),
+        new NextAction("scourge strike", ACTION_DEFAULT + 0.35f),
+        new NextAction("plague strike", ACTION_DEFAULT + 0.3f),
+        new NextAction("icy touch", ACTION_DEFAULT + 0.25f),
+        new NextAction("blood strike", ACTION_DEFAULT + 0.2f),
+        new NextAction("horn of winter", ACTION_DEFAULT + 0.15f),
         new NextAction("death coil", ACTION_DEFAULT + 0.1f),
         new NextAction("melee", ACTION_DEFAULT), nullptr);
 }
@@ -100,11 +104,6 @@ void UnholyDKStrategy::InitTriggers(std::vector<TriggerNode*>& triggers)
 
     triggers.push_back(new TriggerNode("dd cd and no desolation",
                                        NextAction::array(0, new NextAction("blood strike", ACTION_DEFAULT + 0.75f), nullptr)));
-
-    // triggers.push_back(
-    //     new TriggerNode("icy touch", NextAction::array(0, new NextAction("icy touch", ACTION_HIGH + 2), nullptr)));
-    // triggers.push_back(new TriggerNode(
-    //     "plague strike", NextAction::array(0, new NextAction("plague strike", ACTION_HIGH + 1), nullptr)));
 
     triggers.push_back(new TriggerNode(
         "high frost rune", NextAction::array(0,
@@ -126,7 +125,6 @@ void UnholyDKStrategy::InitTriggers(std::vector<TriggerNode*>& triggers)
     triggers.push_back(
         new TriggerNode("no rune", NextAction::array(0, new NextAction("empower rune weapon", ACTION_HIGH + 1), nullptr)));
 
-    // triggers.push_back(new TriggerNode("often", NextAction::array(0, new NextAction(, ACTION_NORMAL + 2), nullptr)));
     triggers.push_back(new TriggerNode(
         "army of the dead", NextAction::array(0, new NextAction("army of the dead", ACTION_HIGH + 6), nullptr)));
     triggers.push_back(
