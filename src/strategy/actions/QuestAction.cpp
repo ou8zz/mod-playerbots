@@ -47,8 +47,8 @@ bool QuestAction::Execute(Event event)
     bool result = false;
 
     // Check the nearest NPCs
-    GuidVector npcs = AI_VALUE(GuidVector, "最近的 NPC");
-    for (const auto& npc : npcs)
+    GuidVector npcs = AI_VALUE(GuidVector, "nearest npcs");
+    for (auto const& npc : npcs)
     {
         Unit* unit = botAI->GetUnit(npc);
         if (unit && bot->GetDistance(unit) <= INTERACTION_DISTANCE)
@@ -58,8 +58,8 @@ bool QuestAction::Execute(Event event)
     }
 
     // Checks the nearest game objects
-    GuidVector gos = AI_VALUE(GuidVector, "附近的游戏对象");
-    for (const auto& go : gos)
+    GuidVector gos = AI_VALUE(GuidVector, "nearest game objects");
+    for (auto const& go : gos)
     {
         GameObject* gameobj = botAI->GetGameObject(go);
         if (gameobj && bot->GetDistance(gameobj) <= INTERACTION_DISTANCE)
@@ -359,7 +359,7 @@ bool QuestUpdateAddItemAction::Execute(Event event)
         uint32 availableItemsCount = botAI->GetInventoryItemsCountWithId(itemId);
         placeholders["%quest_obj_available"] = std::to_string(availableItemsCount);
 
-        for (const auto& pair : botAI->GetCurrentQuestsRequiringItemId(itemId))
+        for (auto const& pair : botAI->GetCurrentQuestsRequiringItemId(itemId))
         {
             placeholders["%quest_link"] = chat->FormatQuest(pair.first);
             uint32 requiredItemsCount = pair.second;
