@@ -93,6 +93,11 @@ NextAction** UnholyDKStrategy::getDefaultActions()
 void UnholyDKStrategy::InitTriggers(std::vector<TriggerNode*>& triggers)
 {
     GenericDKStrategy::InitTriggers(triggers);
+    
+    // Add trigger for unholy presence
+    triggers.push_back(new TriggerNode(
+        "dk presence", NextAction::array(0, new NextAction("unholy presence", ACTION_DEFAULT + 0.05f), nullptr)));
+        
     triggers.push_back(new TriggerNode(
         "death and decay cooldown", NextAction::array(0,
             new NextAction("ghoul frenzy", ACTION_DEFAULT + 0.9f),
