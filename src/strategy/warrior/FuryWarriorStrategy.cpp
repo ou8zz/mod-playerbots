@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2016+ AzerothCore <www.azerothcore.org>, released under GNU GPL v2 license, you may redistribute it
- * and/or modify it under version 2 of the License, or (at your option), any later version.
+ * Copyright (C) 2016+ AzerothCore <www.azerothcore.org>, released under GNU AGPL v3 license, you may redistribute it
+ * and/or modify it under version 3 of the License, or (at your option), any later version.
  */
 
 #include "FuryWarriorStrategy.h"
@@ -46,9 +46,13 @@ FuryWarriorStrategy::FuryWarriorStrategy(PlayerbotAI* botAI) : GenericWarriorStr
 NextAction** FuryWarriorStrategy::getDefaultActions()
 {
     return NextAction::array(
-        0, new NextAction("bloodthirst", ACTION_DEFAULT + 0.5f), new NextAction("whirlwind", ACTION_DEFAULT + 0.4f),
-        new NextAction("sunder armor", ACTION_DEFAULT + 0.3f), new NextAction("execute", ACTION_DEFAULT + 0.2f),
-        // new NextAction("overpower", ACTION_DEFAULT + 0.1f),
+        0, new NextAction("death wish", ACTION_DEFAULT + 0.8f),
+        new NextAction("berserker rage", ACTION_DEFAULT + 0.7f),
+        new NextAction("bloodthirst", ACTION_DEFAULT + 0.6f),
+        new NextAction("whirlwind", ACTION_DEFAULT + 0.5f),
+        new NextAction("heroic strike", ACTION_DEFAULT + 0.4f),
+        new NextAction("sunder armor", ACTION_DEFAULT + 0.3f),
+        new NextAction("execute", ACTION_DEFAULT + 0.2f),
         new NextAction("melee", ACTION_DEFAULT), NULL);
 }
 
@@ -83,6 +87,8 @@ void FuryWarriorStrategy::InitTriggers(std::vector<TriggerNode*>& triggers)
         new TriggerNode("instant slam", NextAction::array(0, new NextAction("slam", ACTION_HIGH + 5), nullptr)));
     triggers.push_back(
         new TriggerNode("bloodrage", NextAction::array(0, new NextAction("bloodrage", ACTION_HIGH + 2), nullptr)));
+    triggers.push_back(new TriggerNode("high rage available",
+                                       NextAction::array(0, new NextAction("heroic strike", ACTION_DEFAULT + 0.1f), NULL)));
     triggers.push_back(new TriggerNode("medium rage available",
                                        NextAction::array(0, new NextAction("heroic strike", ACTION_DEFAULT + 0.1f), NULL)));
     // triggers.push_back(new TriggerNode("berserker rage", NextAction::array(0, new NextAction("berserker rage",

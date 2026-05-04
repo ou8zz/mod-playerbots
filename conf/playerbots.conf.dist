@@ -2,10 +2,6 @@
 # PLAYERBOTS 配置文件                            #
 ##################################################
 
-# Overview
-# "Randombot": randomly generated bots that log in separately from players and populate the world. Depending on settings, randombots may automatically grind, quest, and upgrade equipment and can be invited to groups and given commands.
-# "Altbot": characters created on player accounts, which may be logged in by the player and invited to groups and given commands like randombots. Depending on settings, altbots can be limited to characters on the active player's account or in the active player's guild.
-# Information about commands to control bots and set their strategies can be found on the wiki at https://github.com/liyunfan1223/mod-playerbots/wiki/Playerbot-Commands.
 # 概述
 # "Randombot": 随机生成的机器人，它们独立于玩家登录并填充世界。根据设置，随机机器人可以自动刷怪、做任务和升级装备，并且可以被邀请到队伍中并接受命令。
 # "Altbot": 在玩家账户上创建的角色，可以像随机机器人一样被登录并邀请到队伍中并接受命令。根据设置，alt机器人可以限制为仅限活动玩家账户中的角色或活动玩家公会中的角色。
@@ -20,15 +16,16 @@
 #        坐骑
 #        装备
 #        拾取
-#        时间
+#        计时器
 #        距离
 #        阈值
 #        任务
 #        战斗
+#        圣骑士增益策略
 #        作弊
 #        法术
 #        飞行路线
-#    随机机器人专用设置
+#    随机机器人特定设置
 #        通用
 #        等级
 #        装备
@@ -40,26 +37,26 @@
 #        传送
 #        战场 & 竞技场 & PvP
 #        间隔
-#    预设天赋
+#    预设配置
 #        信息
 #        战士
 #        圣骑士
 #        猎人
-#        盗贼
+#        潜行者
 #        牧师
 #        死亡骑士
-#        萨满
+#        萨满祭司
 #        法师
 #        术士
 #        德鲁伊
-#    随机机器人默认天赋规格
+#    随机机器人默认天赋配置
 #        战士
 #        圣骑士
 #        猎人
-#        盗贼
+#        潜行者
 #        牧师
 #        死亡骑士
-#        萨满
+#        萨满祭司
 #        法师
 #        术士
 #        德鲁伊
@@ -68,12 +65,11 @@
 #        调试
 #        聊天设置
 #        日志
-#    已弃用（临时）
+#    已弃用 (临时)
 #
 #
 #
 ####################################################################################################
-
 
 ###################################
 #                                 #
@@ -83,36 +79,25 @@
 
 ####################################################################################################
 
-# Enable or disable Playerbots module
 # 启用或禁用 Playerbots 模块
 AiPlayerbot.Enabled = 1
 
-# Enable randombot system
 # 启用随机机器人系统
 AiPlayerbot.RandomBotAutologin = 1
 
-# Randombot count
 # 随机机器人数量
-AiPlayerbot.MinRandomBots = 330
-AiPlayerbot.MaxRandomBots = 440
+AiPlayerbot.MinRandomBots = 909
+AiPlayerbot.MaxRandomBots = 999
 
-# Randombot accounts
-# If you are not using any expansion at all, you may have to set this manually, in which case please ensure that RandomBotAccountCount is at least greater than (MaxRandomBots / 10 + AddClassAccountPoolSize)
-# Default: 0 (automatic)
 # 随机机器人账户
 # 如果您根本没有使用任何资料片，您可能需要手动设置此选项，在这种情况下请确保 RandomBotAccountCount 至少大于 (MaxRandomBots / 10 + AddClassAccountPoolSize)
 # 默认值: 0 (自动)
 AiPlayerbot.RandomBotAccountCount = 0
 
-# Delete all randombot accounts
-# To apply this, set the number to 1 and run the Worldserver. Once deletion is complete, if you would like to recreate randombots, set the number back to 0 and rerun the Worldserver.
 # 删除所有随机机器人账户
 # 要应用此设置，请将数字设置为 1 并运行 Worldserver。一旦删除完成，如果您想重新创建随机机器人，请将数字改回 0 并重新运行 Worldserver。
 AiPlayerbot.DeleteRandomBotAccounts = 0
 
-# Disable randombots when no real players are logged in
-# Default: 0 (randombots will login when server starts)
-# If enabled, randombots will only log in 30 seconds (default) after a real player logs in, and will log out 300 seconds (default) after all real players log out
 # 当没有真实玩家登录时禁用随机机器人
 # 默认值: 0 (服务器启动时随机机器人将登录)
 # 如果启用，随机机器人只会在真实玩家登录后 30 秒（默认）登录，并在所有真实玩家登出后 300 秒（默认）登出
@@ -173,6 +158,9 @@ AiPlayerbot.RandomBotGuildNearby = 0
 
 # 随机机器人创建的公会数量
 AiPlayerbot.RandomBotGuildCount = 20
+
+# 随机机器人公会的最大成员数量（最小值硬编码为 10）
+AiPlayerbot.RandomBotGuildSizeMax = 15
 
 # 如果设置为1则删除所有随机机器人公会
 AiPlayerbot.DeleteRandomBotGuilds = 0
@@ -321,7 +309,7 @@ AiPlayerbot.LootRollLevel = 1
 AiPlayerbot.IterationsPerTick = 10
 
 # 两次短时间法术施放之间的延迟
-AiPlayerbot.GlobalCooldown = 500
+AiPlayerbot.GlobalCooldown = 100
 
 # 移动时的最大等待时间
 AiPlayerbot.MaxWaitForMove = 5000
@@ -372,15 +360,15 @@ AiPlayerbot.LootDelay = 1000
 #
 #
 
+# Distances are in yards
 AiPlayerbot.FarDistance = 20.0
-AiPlayerbot.SightDistance = 75.0
+AiPlayerbot.SightDistance = 100.0
 AiPlayerbot.SpellDistance = 28.5
 AiPlayerbot.ShootDistance = 5.0
-AiPlayerbot.ReactDistance = 150.0
-AiPlayerbot.GrindDistance = 75.0
 AiPlayerbot.HealDistance = 38.5
 AiPlayerbot.LootDistance = 15.0
 AiPlayerbot.FleeDistance = 5.0
+AiPlayerbot.AggroDistance = 22
 AiPlayerbot.TooCloseDistance = 5.0
 AiPlayerbot.MeleeDistance = 0.75
 AiPlayerbot.FollowDistance = 1.5
@@ -388,7 +376,8 @@ AiPlayerbot.WhisperDistance = 6000.0
 AiPlayerbot.ContactDistance = 0.45
 AiPlayerbot.AoeRadius = 10
 AiPlayerbot.RpgDistance = 200
-AiPlayerbot.AggroDistance = 22
+AiPlayerbot.GrindDistance = 75.0
+AiPlayerbot.ReactDistance = 150.0
 
 #
 #
@@ -455,7 +444,7 @@ AiPlayerbot.AutoAvoidAoe = 1
 AiPlayerbot.MaxAoeAvoidRadius = 15.0
 
 # 应该避免的AOE法术ID白名单
-AiPlayerbot.AoeAvoidSpellWhitelist = 50759,57491,13810
+AiPlayerbot.AoeAvoidSpellWhitelist = 50759,57491,13810,29946
 
 # 启用治疗机器人节约法力策略
 # 默认值: 1 (启用)
@@ -474,13 +463,60 @@ AiPlayerbot.FleeingEnabled = 1
 ####################################################################################################
 
 ####################################################################################################
+# 圣骑士增益策略
+#
+#
+
+# 使用更强增益（圣骑士、法师、德鲁伊）的最小队伍规模
+# 默认值: 3
+AiPlayerbot.MinBotsForGreaterBuff = 3
+
+# 每个机器人每次增益缺少材料时，重新代理RP警告之间的冷却时间（秒）
+# 默认值: 30
+AiPlayerbot.RPWarningCooldown = 30
+
+#
+#
+#
+####################################################################################################
+
+####################################################################################################
 # CHEATS
 #
 #
 
-# Enable/Disable maintenance command (learn all available spells and skills, supplement consumables, repair, enchant equipment if bot's level is above AiPlayerbot.MinEnchantingBotLevel)
+# Enable/Disable maintenance command
+# Learn all available spells and skills, refresh consumables, repair, enchant equipment and socket gems if bot's level is above AiPlayerbot.MinEnchantingBotLevel
 # Default: 1 (enabled)
 AiPlayerbot.MaintenanceCommand = 1
+
+# Enable/Disable specific maintenance command functionality for alt bots
+# Disable to prevent players from giving free bags, spells, skill levels etc to their alt bots
+# Default: 1 (enabled)
+AiPlayerbot.AltMaintenanceAmmo = 1
+AiPlayerbot.AltMaintenanceFood = 1
+AiPlayerbot.AltMaintenanceReagents = 1
+AiPlayerbot.AltMaintenanceConsumables = 1
+AiPlayerbot.AltMaintenancePotions = 1
+
+AiPlayerbot.AltMaintenanceBags = 1
+AiPlayerbot.AltMaintenanceMounts = 1
+AiPlayerbot.AltMaintenanceSkills = 1
+
+AiPlayerbot.AltMaintenanceClassSpells = 1
+AiPlayerbot.AltMaintenanceAvailableSpells = 1
+AiPlayerbot.AltMaintenanceSpecialSpells = 1
+AiPlayerbot.AltMaintenanceTalentTree = 1
+AiPlayerbot.AltMaintenanceGlyphs = 1
+AiPlayerbot.AltMaintenanceGemsEnchants = 1
+
+AiPlayerbot.AltMaintenancePet = 1
+AiPlayerbot.AltMaintenancePetTalents = 1
+
+AiPlayerbot.AltMaintenanceReputation = 1
+AiPlayerbot.AltMaintenanceAttunementQuests = 1
+AiPlayerbot.AltMaintenanceKeyring = 1
+
 
 # Enable/Disable autogear command, which automatically upgrades bots' gear; the quality is limited by AutoGearQualityLimit and AutoGearScoreLimit
 # Default: 1 (enabled)
@@ -503,21 +539,21 @@ AiPlayerbot.AutoGearQualityLimit = 3
 # Max iLVL Phase 1(Kara, Gruul, Mag) = 125 | Phase 1.5(ZA) = 138 | Phase 2(SC, TK) = 141 | Phase 3(Hyjal, BT) = 156 | Phase 4(Sunwell) = 164
 # Wotlk
 # Max iLVL Tier 7(10/25) = 200/213 | Tier 8(10/25) = 225/232 | Tier 9(10/25) = 232/245 | Tier 10(10/25/HC) = 251/264/290
-# Max iLVL Phase 1(Naxx) = 224 | Phase 2(Ulduar) = 245 | Phase 3(ToC) = 258 | Phase 4(ICC) = 290 
+# Max iLVL Phase 1(Naxx) = 224 | Phase 2(Ulduar) = 245 | Phase 3(ToC) = 258 | Phase 4(ICC) = 290
 # Default: 0 (no limit)
 AiPlayerbot.AutoGearScoreLimit = 0
 
 # Enable/Disable cheats for bots
-# "food" (bots use cheat when eat or drink)
+# "food" (bots eat or drink without using food or drinks from their inventory)
 # "gold" (bots have infinite gold)
-# "health" (bots have infinite health)
+# "health" (bots immediately regenerate lost health)
 # "mana" (bots have infinite mana)
 # "power" (bots have infinite energy, rage, and runic power)
-# "taxi" (bots may use all flight paths, though they will not actually learn them) 
-# "raid" (bots use cheats implemented into raid strategies) 
+# "taxi" (bots may use all flight paths, though they will not actually learn them)
+# "raid" (bots use cheats implemented into raid strategies (currently only for Ulduar))
 # To use multiple cheats, separate them by commas below (e.g., to enable all, use "gold,health,mana,power,raid,taxi")
-# Default: taxi and raid are enabled
-AiPlayerbot.BotCheats = "food,taxi,raid" 
+# Default: food, taxi, and raid are enabled
+AiPlayerbot.BotCheats = "food,taxi,raid"
 
 #
 #
@@ -529,19 +565,15 @@ AiPlayerbot.BotCheats = "food,taxi,raid"
 # 飞行路径
 #
 
-# Min random delay before the 1st follower bot clicks the flight-master (ms)
 #  第一个跟随机器人点击飞行管理员之前的最小随机延迟（毫秒）
 AiPlayerbot.BotTaxiDelayMinMs = 350
 
-# Upper bound for the overall taxi delay window (ms) – larger spreads big raids
 # 整体飞行延迟窗口的上限（毫秒）– 更大的间隔适用于大型团队
 AiPlayerbot.BotTaxiDelayMaxMs = 5000
 
-# Fixed gap added per group-slot so bots never take off together (ms)
 # 每个队伍位置固定的间隔，这样机器人永远不会一起起飞（毫秒）
 AiPlayerbot.BotTaxiGapMs = 200
 
-# Extra small randomness added to each gap so launches don’t look robotic (ms)
 # 添加到每个间隔的额外小随机性，使起飞看起来不那么机械化（毫秒）
 AiPlayerbot.BotTaxiGapJitterMs = 100
 
@@ -552,8 +584,7 @@ AiPlayerbot.BotTaxiGapJitterMs = 100
 
 #######################################
 #                                     #
-# RANDOMBOT-SPECIFIC SETTINGS  #
-# 随机机器人专用设置 
+# RANDOMBOT-SPECIFIC SETTINGS  随机机器人专用设置 #
 #                                     #
 #######################################
 
@@ -562,73 +593,52 @@ AiPlayerbot.BotTaxiGapJitterMs = 100
 # 常规
 #
 
-# Enable/Disable randomly generated password for randombot accounts
 # 为随机机器人账户启用/禁用随机生成的密码
 AiPlayerbot.RandomBotRandomPassword = 0
 
-# Prefix for account names to create for randombots
 # 随机机器人账户名称的前缀
 AiPlayerbot.RandomBotAccountPrefix = "rndbot"
 
-# Minimum and maximum levels for randombots
 # 随机机器人的最低和最高级别
 AiPlayerbot.RandomBotMinLevel = 60
 AiPlayerbot.RandomBotMaxLevel = 80
 
-# Sync max randombot level with max level of online players
-# Default: 0 (disabled)
 # 与在线玩家同步最大随机机器人等级
 # 默认值：0（禁用）
-AiPlayerbot.SyncLevelWithPlayers = 0
+AiPlayerbot.SyncLevelWithPlayers = 1
 
-# Mark many quests ≤ bot level as complete (slows down bot creation)
 # 标记许多小于或等于机器人等级的任务为完成（会减慢机器人创建速度）
 AiPlayerbot.PreQuests = 0
 
-# Enable LFG for randombots
 # 为随机机器人启用LFG
 AiPlayerbot.RandomBotJoinLfg = 1
 
-# Enable/Disable periodic online - offline of randombots to mimic the real-world scenario where not all players are online simultaneously
-# When enabled, randombots are randomly selected to go online or offline periodically from a larger set
-# Default: 0 (disabled, the set of online bots remains fixed)
 # 启用/禁用随机机器人的定期上线-下线，以模拟真实世界的场景，即并非所有玩家都同时在线
 # 启用时，定期从更大的集合中选择随机机器人上线或下线
 # 默认值：0（禁用，上线机器人的集合保持不变）
 AiPlayerbot.EnablePeriodicOnlineOffline = 0
 
-# Defines the ratio between the total number of randombots (including offline ones) and the number of randombots currently online (MaxRandomBots)
-# This setting must greater than 1.0 and only applies when EnablePeriodicOnlineOffline
-# Default: 2.0 (total number of bots is twice the number of MaxRandomBots)
 # 定义随机机器人总数（包括离线的）与当前在线的随机机器人数量（MaxRandomBots）之间的比率
 # 此设置必须大于1.0，仅在启用EnablePeriodicOnlineOffline时适用
 # 默认值：2.0（机器人的总数是MaxRandomBots的两倍）
 AiPlayerbot.PeriodicOnlineOfflineRatio = 2.0
 
-# Percentage ratio of Alliance and Horde randombots
 # 联盟和部落随机机器人的百分比比率
 AiPlayerbot.RandomBotAllianceRatio = 50
 AiPlayerbot.RandomBotHordeRatio = 50
 
-# Disable logging in of death knight bots
 # 禁用死亡骑士机器人的登录
 AiPlayerbot.DisableDeathKnightLogin = 0
 
-# Enable simulated expansion limitation for talents and glyphs
-# If enabled, limits talent trees to 5 rows plus the middle talent of the 6th row for bots until level 61 and 7 rows plus the middle talent of the 8th row for bots until level 71
-# Default: 0 (disabled)
 # 为天赋和雕文启用模拟的版本限制
 # 如果启用，会将天赋树限制为前5行加上第6行的中间天赋（适用于61级以下的机器人）和前7行加上第8行的中间天赋（适用于71级以下的机器人）
 # 默认值：0（禁用）
 AiPlayerbot.LimitTalentsExpansion = 0
 
-# Configure randombots and addClass bot trading (0: Disabled, 1: Enabled, 2: Only Buy, 3: Only Sell)
-# Default: 1 (enabled)
 # 配置随机机器人和addClass机器人的交易（0：禁用，1：启用，2：仅购买，3：仅出售）
 # 默认值：1（启用）
 AiPlayerbot.EnableRandomBotTrading = 1
 
-# Configure message prefixes which will be excluded in analysis in trade action to open trade window
 # 配置在交易动作中用于打开交易窗口而被排除在分析之外的消息前缀
 AiPlayerbot.TradeActionExcludedPrefixes = "RPLL_H_,DBMv4,{звезда} Questie,{rt1} Questie"
 
@@ -642,32 +652,32 @@ AiPlayerbot.TradeActionExcludedPrefixes = "RPLL_H_,DBMv4,{звезда} Questie,
 #
 #
 
-# Disable randombots being generated with a random level
-# If disabled, every randombot starts on a specified level (but can still level up by killing mobs and questing)
+# 禁用随机生成的机器人使用随机等级
+# 如果禁用，每个随机机器人从指定等级开始（但仍可以通过杀怪和做任务升级）
 AiPlayerbot.DisableRandomLevels = 0
 
-# Set randombots' starting level here if "AiPlayerbot.DisableRandomLevels" enabled
+# 如果启用"AiPlayerbot.DisableRandomLevels"，在此设置随机机器人的起始等级
 AiPlayerbot.RandombotStartingLevel = 1
 
-# Chance randombot has min level on first randomize
-# Default: 0.1 (10%)
+# 随机机器人在首次随机化时具有最小等级的几率
+# 默认值：0.1（10%）
 AiPlayerbot.RandomBotMinLevelChance = 0.1
 
-# Chance randombot has max level on first randomize
-# Default 0.1 (10%)
-AiPlayerbot.RandomBotMaxLevelChance = 0.1
+# 随机机器人在首次随机化时具有最大等级的几率
+# 默认值：0.1（10%）
+AiPlayerbot.RandomBotMaxLevelChance = 0.5
 
-# Fix the level of randombots (they won't level up)
-# Default: 0 (disabled)
+# 固定随机机器人的等级（它们不会升级）
+# 默认值：0（禁用）
 AiPlayerbot.RandomBotFixedLevel = 0
 
-# Set RandomBotMaxLevel bots to RandomBotMinLevel
-# Default: 0 (disabled)
+# 将RandomBotMaxLevel等级的机器人设置为RandomBotMinLevel等级
+# 默认值：0（禁用）
 AiPlayerbot.DowngradeMaxLevelBot = 0
 
-# Set XP rate for random bots (Default: 1.0)
-# Server XP Rate * AiPlayerbot.RandomBotXPRate
-AiPlayerbot.RandomBotXPRate = 1.0
+# 设置随机机器人的经验值倍率（默认：1.0）
+# 服务器经验值倍率 * AiPlayerbot.RandomBotXPRate
+AiPlayerbot.RandomBotXPRate = 2.0
 
 #
 #
@@ -675,81 +685,81 @@ AiPlayerbot.RandomBotXPRate = 1.0
 ####################################################################################################
 
 ####################################################################################################
-# GEAR
+# GEAR 装备
 #
 #
 
-# Equipment quality limitation for randombots (1 = normal, 2 = uncommon, 3 = rare, 4 = epic, 5 = legendary)
-# This also sets the maximum quality that can be generated by autogear for randombots and altbots
-# Default: 3 (rare)
-AiPlayerbot.RandomGearQualityLimit = 3
+# 随机机器人装备品质限制 (1 = 普通, 2 = 优秀, 3 = 精良, 4 = 史诗, 5 = 传说)
+# 这也设置了随机机器人和替代机器人使用autogear命令能生成的最大品质装备
+# 默认值: 3 (精良)
+AiPlayerbot.RandomGearQualityLimit = 5
 
-# Equipment item level (not gearscore) limitation for randombots (0 = no limit)
-# Classic
-# Max iLVL Tier 1 = 66 | Tier 2 = 76 | Tier 2.5 = 88 | Tier 3 = 92
-# Max iLVL Phase 1(MC, Ony, ZG) = 78 | Phase 2(BWL) = 83 | Phase 2.5(AQ40) = 88 | Phase 3(Naxx40) = 92
-# TBC
-# Max iLVL Tier 4 = 120 | Tier 5 = 133 | Tier 6 = 164
-# Max iLVL Phase 1(Kara, Gruul, Mag) = 125 | Phase 1.5(ZA) = 138 | Phase 2(SC, TK) = 141 | Phase 3(Hyjal, BT) = 156 | Phase 4(Sunwell) = 164
-# Wotlk
-# Max iLVL Tier 7(10/25) = 200/213 | Tier 8(10/25) = 225/232 | Tier 9(10/25) = 232/245 | Tier 10(10/25/HC) = 251/264/290
-# Max iLVL Phase 1(Naxx) = 224 | Phase 2(Ulduar) = 245 | Phase 3(ToC) = 258 | Phase 4(ICC) = 290 
-# Default: 0 (no limit)
+# 随机机器人装备物品等级(不是装备评分)限制 (0 = 无限制)
+# 经典旧世
+# 最大物品等级 T1 = 66 | T2 = 76 | T2.5 = 88 | T3 = 92
+# 最大物品等级 阶段1(MC, Ony, ZG) = 78 | 阶段2(BWL) = 83 | 阶段2.5(AQ40) = 88 | 阶段3(Naxx40) = 92
+# 燃烧的远征
+# 最大物品等级 T4 = 120 | T5 = 133 | T6 = 164
+# 最大物品等级 阶段1(Kara, Gruul, Mag) = 125 | 阶段1.5(ZA) = 138 | 阶段2(SC, TK) = 141 | 阶段3(Hyjal, BT) = 156 | 阶段4(Sunwell) = 164
+# 巫妖王之怒
+# 最大物品等级 T7(10/25) = 200/213 | T8(10/25) = 225/232 | T9(10/25) = 232/245 | T10(10/25/HC) = 251/264/290
+# 最大物品等级 阶段1(Naxx) = 224 | 阶段2(Ulduar) = 245 | 阶段3(ToC) = 258 | 阶段4(ICC) = 290 
+# 默认值: 0 (无限制)
 AiPlayerbot.RandomGearScoreLimit = 0
 
-# If disabled, random bots can only upgrade equipment through looting and quests
-# Default: 1 (enabled)
+# 如果禁用，随机机器人只能通过拾取和任务来升级装备
+# 默认值: 1 (启用)
 AiPlayerbot.IncrementalGearInit = 1
 
-# Set minimum level of bots that will enchant their equipment (Maxlevel + 1 to disable)
-# Default: 60
+# 设置机器人开始附魔装备的最低等级 (Maxlevel + 1 禁用)
+# 默认值: 60
 AiPlayerbot.MinEnchantingBotLevel = 60
 
-# Enable expansion limitation for bot enchants
-# If enabled, bots will not use TBC enchants until level 61 or WotLK enchants until level 71
-# Default: 1 (enabled)
+# 启用/禁用机器人附魔的版本限制
+# 如果启用，机器人在61级之前不会使用TBC附魔，71级之前不会使用WotLK附魔
+# 默认值: 1 (启用)
 AiPlayerbot.LimitEnchantExpansion = 1
 
-# Enable expansion limitation for gear
-# If enabled, bots will not equip TBC gear until level 61 or WotLK gear until level 71
-# Default: 1 (enabled)
+# 启用/禁用机器人装备的版本限制
+# 如果启用，机器人在61级之前不会装备TBC装备，71级之前不会装备WotLK装备
+# 默认值: 1 (启用)
 AiPlayerbot.LimitGearExpansion = 1
 
-# Chance randombot will have less-than-optimized generated gear
-# Set between 0 (0%) and 1 (100%)
-AiPlayerbot.RandomGearLoweringChance = 0
+# 随机机器人拥有次优化装备的概率
+# 设置范围 0 (0%) 到 1 (100%)
+AiPlayerbot.RandomGearLoweringChance = 1
 
-# Randombots check player's gearscore level and deny the group invitation if it's too low
-# Default: 0 (disabled)
+# 随机机器人检查玩家的装备评分等级，如果太低则拒绝组队邀请
+# 默认值: 0 (禁用)
 AiPlayerbot.GearScoreCheck = 0
 
-# Enable/Disable bot equipment persistence (stop random initialization) after certain level (EquipmentPersistenceLevel)
-# Default: 0 (disabled)
+# 启用/禁用机器人装备持久化(停止随机初始化)，在达到一定等级后(EquipmentPersistenceLevel)
+# 默认值: 0 (禁用)
 AiPlayerbot.EquipmentPersistence = 0
 
-# Default level if enabled: 80
+# 默认等级 如果启用: 80
 AiPlayerbot.EquipmentPersistenceLevel = 80
 
-# Randombots automatically upgrade their equipment on levelup
-# Default: 1 (enabled)
+# 随机机器人升级时自动升级装备
+# 默认值: 1 (启用)
 AiPlayerbot.AutoUpgradeEquip = 1
 
-# Only set wolf pets for hunters for optimal raid performance (0 = disabled, 1 = enabled only for max-level bots, 2 = enabled)
-# Default: 0 (disabled)
+# 仅为猎人机器人设置狼宠物以获得最佳团队表现 (0 = 禁用, 1 = 仅对满级机器人启用, 2 = 启用)
+# 默认值: 0 (禁用)
 AiPlayerbot.HunterWolfPet = 0
 
-# Default pet stance when a bot summons a pet
-# 0 = Passive, 1 = Defensive, 2 = Aggressive
-# Default: 1 (Defensive)
+# 机器人召唤宠物时的默认宠物姿态
+# 0 = 被动, 1 = 防御, 2 = 激进
+# 默认值: 1 (防御)
 AiPlayerbot.DefaultPetStance = 1
 
-# Enable/disable debug messages about pet commands
-# 0 = Disabled, 1 = Enabled
-# Default = 0 (disabled)
+# 启用/禁用宠物命令的调试信息
+# 0 = 禁用, 1 = 启用
+# 默认值 = 0 (禁用)
 AiPlayerbot.PetChatCommandDebug = 0
 
-# Prohibit hunter bots from creating pets with any family ID listed below in ExcludedHunterPetFamilies
-# See the creature_family database table for all pet families by ID (note: ID for spiders is 3)
+# 禁止猎人机器人创建任何在下方ExcludedHunterPetFamilies列表中的宠物家族ID
+# 请查看creature_family数据库表获取所有宠物家族的ID (注意: 蜘蛛的ID是3)
 AiPlayerbot.ExcludedHunterPetFamilies = ""
 
 #
@@ -759,31 +769,31 @@ AiPlayerbot.ExcludedHunterPetFamilies = ""
 
 
 ####################################################################################################
-# ACTIVITIES
+# 活动设置
 #
 #
-# Specify percent of active bots
-# The default is 100% but will be automatically adjusted if botActiveAloneSmartScale
-# is enabled. Regardless, this value is only applied to inactive areas where no real players
-# are detected. When real players are nearby, the value is always enforced to 100%
+# 指定活跃机器人的百分比
+# 默认值是100%，但如果启用了botActiveAloneSmartScale，
+# 该值会自动调整。无论如何，这个值只应用于没有检测到真实玩家的不活跃区域。
+# 当附近有真实玩家时，该值始终强制为100%
 AiPlayerbot.BotActiveAlone = 100
 
-# Force botActiveAlone when bot is within the specified distance of a real player
+# 当机器人在真实玩家的指定距离内时，强制执行botActiveAlone
 AiPlayerbot.BotActiveAloneForceWhenInRadius = 150
 AiPlayerbot.BotActiveAloneForceWhenInZone = 1
 AiPlayerbot.BotActiveAloneForceWhenInMap = 0
 AiPlayerbot.BotActiveAloneForceWhenIsFriend = 1
 AiPlayerbot.BotActiveAloneForceWhenInGuild = 1
 
-# SmartScale (automatic scaling of percentage of active bots based on latency)
-# The default is 1. When enabled (smart) scales the 'BotActiveAlone' value.
-# (The scaling will be overruled by the BotActiveAloneForceWhen...rules)
+# 智能缩放（基于延迟自动缩放活跃机器人百分比）
+# 默认值为1。启用时（智能）会缩放'BotActiveAlone'值。
+# （缩放会被BotActiveAloneForceWhen...规则覆盖）
 #
-#   Limitfloor - when DIFF (latency) is above floor, activity scaling begins
-#   LimitCeiling - when DIFF (latency) is above ceiling, activity is 0%
+#   Limitfloor - 当延迟差高于下限时，开始活动缩放
+#   LimitCeiling - 当延迟差高于上限时，活动为0%
 #
-#   MinLevel - only apply scaling when level is above or equal to min(bot)Level
-#   MaxLevel - only apply scaling when level is lower or equal of max(bot)Level
+#   MinLevel - 仅当等级高于或等于最小（机器人）等级时应用缩放
+#   MaxLevel - 仅当等级低于或等于最大（机器人）等级时应用缩放
 #
 AiPlayerbot.botActiveAloneSmartScale = 1
 AiPlayerbot.botActiveAloneSmartScaleDiffLimitfloor = 50
@@ -802,7 +812,7 @@ AiPlayerbot.botActiveAloneSmartScaleWhenMaxLevel = 80
 #
 
 # Quest that will be completed and rewarded for all randombots
-AiPlayerbot.RandomBotQuestIds = "7848,3802,5505,6502,7761,10277,10285,11492,24499,24511,24710,24712"
+AiPlayerbot.RandomBotQuestIds = "3802,5505,6502,7761,7848,10277,10285,11492,13188,13189,24499,24511,24710,24712"
 
 # Randombots will group with nearby randombots to do shared quests
 AiPlayerbot.RandomBotGroupNearby = 0
@@ -824,22 +834,22 @@ AiPlayerbot.RandomBotQuestItems = "5175,5176,5177,5178,6948,11000,12382,13704,16
 #
 #
 
-# Randombots automatically learn class quest reward spells on levelup
-# Default: 0 (disabled)
+# 随机机器人在升级时自动学习职业任务奖励法术
+# 默认值：0（禁用）
 AiPlayerbot.AutoLearnQuestSpells = 0
 
-# Randombots automatically learn trainable spells on levelup
-# Default: 1 (enabled)
+# 随机机器人在升级时自动学习可训练的法术
+# 默认值：1（启用）
 AiPlayerbot.AutoLearnTrainerSpells = 1
 
-# Randombots automatically spend talent points on levelup
-# Default: 1 (enabled)
+# 随机机器人在升级时自动分配天赋点
+# 默认值：1（启用）
 AiPlayerbot.AutoPickTalents = 1
 
-# Spells every randombot will learn automatically and every altbot will learn with maintenance (54197 - cold weather flying)
+# 每个随机机器人都会自动学习的法术，每个alt机器人会通过维护学习的法术（54197 - 寒冷天气飞行）
 AiPlayerbot.RandomBotSpellIds = "54197"
 
-# ID of spell to open lootable chests
+# 打开可拾取宝箱的法术ID
 AiPlayerbot.OpenGoSpell = 6477
 
 #
@@ -853,18 +863,19 @@ AiPlayerbot.OpenGoSpell = 6477
 #
 
 # Additional randombot strategies
-# Strategies added here are applied to all randombots, in addition (or subtraction) to spec-based default strategies. These rules are processed after the defaults.
-AiPlayerbot.RandomBotCombatStrategies = "+dps,+dps assist,-threat"
+# Strategies added here are applied to all randombots, in addition (or subtraction) to spec/role-based default strategies. These rules are processed after the defaults.
+# Example: "+threat,-potions"
+AiPlayerbot.RandomBotCombatStrategies = ""
 AiPlayerbot.RandomBotNonCombatStrategies = ""
 
 # Additional altbot strategies
-# Strategies added here are applied to all altbots, in addition (or subtraction) to spec-based default strategies. These rules are processed after the defaults.
+# Strategies added here are applied to all altbots, in addition (or subtraction) to spec/role-based default strategies. These rules are processed after the defaults.
 AiPlayerbot.CombatStrategies = ""
 AiPlayerbot.NonCombatStrategies = ""
 
-# Remove "healer dps" strategy on specified maps.
-# Default: 0 (disabled)
-AiPlayerbot.HealerDPSMapRestriction = 0
+# Remove "healer dps" strategy on the maps specified below.
+# Default: 1 (enabled)
+AiPlayerbot.HealerDPSMapRestriction = 1
 
 # List of Map IDs where "healer dps" strategy will be removed if AiPlayerbot.HealerDPSMapRestriction is enabled
 # Default: (Dungeon and Raid maps) "33,34,36,43,47,48,70,90,109,129,209,229,230,329,349,389,429,1001,1004,1007,269,540,542,543,545,546,547,552,553,554,555,556,557,558,560,585,574,575,576,578,595,599,600,601,602,604,608,619,632,650,658,668,409,469,509,531,532,534,544,548,550,564,565,580,249,533,603,615,616,624,631,649,724"
@@ -1048,28 +1059,42 @@ AiPlayerbot.ZoneBracket.4197 = 79,80
 #
 #
 
-# Maps where bots can be teleported to
+# 机器人可以传送到的地图
 AiPlayerbot.RandomBotMaps = 0,1,530,571
 
-# Probabilty bots teleport to banker (city)
-# Default: 0.25
+# 机器人传送到银行家（城市）的概率
+# 默认值：0.25
 AiPlayerbot.ProbTeleToBankers = 0.25
 
-# How far randombots are teleported after death
+# Control probability weights for bots teleporting to Capital city bankers
+# Sum of weights need not be 100. Set to 0 to disable teleporting to the city.
+AiPlayerbot.EnableWeightTeleToCityBankers = 1
+AiPlayerbot.TeleToStormwindWeight = 2
+AiPlayerbot.TeleToIronforgeWeight = 1
+AiPlayerbot.TeleToDarnassusWeight = 1
+AiPlayerbot.TeleToExodarWeight = 1
+AiPlayerbot.TeleToOrgrimmarWeight = 2
+AiPlayerbot.TeleToUndercityWeight = 1
+AiPlayerbot.TeleToThunderBluffWeight = 1
+AiPlayerbot.TeleToSilvermoonCityWeight = 1
+AiPlayerbot.TeleToShattrathCityWeight = 1
+AiPlayerbot.TeleToDalaranWeight = 1
+
+# 机器人可以比区域中最低等级生物低多少级
 AiPlayerbot.RandomBotTeleportDistance = 100
 
-# How many levels below the lowest-level creature in a zone, can a bot be
-# This will have no effect if AiPlayerbot.EnableNewRpgStrategy is enabled
-# Default: 1 (randombot will leave if they are more than 1 level lower)
+# 机器人可以比区域中最低等级的生物低多少级
+# 如果启用了AiPlayerbot.EnableNewRpgStrategy，这将没有效果
+# 默认值：1（如果随机机器人等级低超过1级，将离开该区域）
 AiPlayerbot.RandomBotTeleLowerLevel = 1
 
-# How many levels above the highest-level creature in a zone, can a bot be
-# This will have no effect if AiPlayerbot.EnableNewRpgStrategy is enabled
-# Default: 3 (randombot will leave if they are more than 3 levels higher)
+# 机器人可以比区域中最高级生物高多少级
+# 如果启用了AiPlayerbot.EnableNewRpgStrategy，这将没有效果
+# 默认值：3（如果随机机器人等级高超过3级，将离开该区域）
 AiPlayerbot.RandomBotTeleHigherLevel = 3
 
-# Bots automatically teleport to another place for leveling on levelup
-# Default: 1 (enabled)
+# 机器人在升级时自动传送到其他地方进行升级
+# 默认值：1（启用）
 AiPlayerbot.AutoTeleportForLevel = 1
 
 #
@@ -1170,24 +1195,46 @@ AiPlayerbot.FastReactInBG = 1
 ####################################################################################################
 
 ####################################################################################################
-# INTERVALS
+# RANDOM BOT TIMING AND BEHAVIOR
 #
 #
 
-# All in seconds
+# How often (in seconds) the random bot manager runs its main update loop
+# Default: 20
 AiPlayerbot.RandomBotUpdateInterval = 20
+
+# Minimum and maximum seconds before the manager re-evaluates and adjusts total random bot count
+# Defaults: 1800 (min), 7200 (max)
 AiPlayerbot.RandomBotCountChangeMinInterval = 1800
 AiPlayerbot.RandomBotCountChangeMaxInterval = 7200
+
+# Minimum and maximum seconds a random bot will stay online before logging out
+# Defaults: 600 (min), 28800 (max)
 AiPlayerbot.MinRandomBotInWorldTime = 600
 AiPlayerbot.MaxRandomBotInWorldTime = 28800
+
+# Minimum and maximum seconds before a bot is eligible for re-randomization (gear, class, talents, etc.)
+# Defaults: 7200 (min), 1209600 (max)
 AiPlayerbot.MinRandomBotRandomizeTime = 7200
 AiPlayerbot.MaxRandomBotRandomizeTime = 1209600
+
+# Number of bots processed (login, logout, update) per manager update cycle
+# Default: 60
 AiPlayerbot.RandomBotsPerInterval = 60
+
+# Minimum and maximum seconds after death before a bot revives
+# Defaults: 60 (min), 300 (max)
 AiPlayerbot.MinRandomBotReviveTime = 60
 AiPlayerbot.MaxRandomBotReviveTime = 300
+
+# Minimum and maximum seconds between bot teleports to new areas or zones
+# Defaults: 3600 (min), 18000 (max)
 AiPlayerbot.MinRandomBotTeleportInterval = 3600
 AiPlayerbot.MaxRandomBotTeleportInterval = 18000
-AiPlayerbot.PermanantlyInWorldTime = 31104000
+
+# Number of seconds bots flagged as permanent stay in the world (31,104,000 ≈ 1 year)
+# Default: 31104000
+AiPlayerbot.PermanentlyInWorldTime = 31104000
 
 #
 #
@@ -1456,11 +1503,11 @@ AiPlayerbot.PremadeSpecGlyph.7.0 = 41536,43385,41532,43386,44923,45776
 AiPlayerbot.PremadeSpecLink.7.0.60 = 4530001520213351102301351
 AiPlayerbot.PremadeSpecLink.7.0.80 = 3530001523213351322301351-005050031
 AiPlayerbot.PremadeSpecName.7.1 = enh pve
-AiPlayerbot.PremadeSpecGlyph.7.1 = 41542,43385,41539,43386,44923,45771
-AiPlayerbot.PremadeSpecLink.7.1.60 = -30205033005001333031131131051
-AiPlayerbot.PremadeSpecLink.7.1.80 = 053030052-30205033005021333031131131051
+AiPlayerbot.PremadeSpecGlyph.7.1 = 41530,43385,41539,43386,44923,45771
+AiPlayerbot.PremadeSpecLink.7.1.60 = -30305003105021333031121131051
+AiPlayerbot.PremadeSpecLink.7.1.80 = 053030152-30305003105021333031131131051
 AiPlayerbot.PremadeSpecName.7.2 = resto pve
-AiPlayerbot.PremadeSpecGlyph.7.2 = 41517,43385,41527,43386,44923,45775
+AiPlayerbot.PremadeSpecGlyph.7.2 = 41527,43385,41517,43386,44923,45775
 AiPlayerbot.PremadeSpecLink.7.2.60 = --50005301235310501102321251
 AiPlayerbot.PremadeSpecLink.7.2.80 = -00502033-50005331335310501122331251
 AiPlayerbot.PremadeSpecName.7.3 = ele pvp
@@ -1611,10 +1658,10 @@ AiPlayerbot.PremadeSpecLink.11.6.80 = 05320021--230033312031500531353013251
 #
 #
 
-# Applies a permanent buff to all bots simulating effects of spells, flasks, food, runes, etc.
+# Applies automatically refreshing buffs to bots simulating effects of spells, flasks, food, runes, etc.
 # Requires sending the command "nc +worldbuff" in chat to a bot (or a group of bots) to enable
 # Each entry in the matrix should be formatted as follows: Entry:FactionID,ClassID,SpecID,MinimumLevel,MaximumLevel:SpellID1,SpellID2,etc.;
-# Use 0 for any field to make it agnostic (e.g., 0 for FactionID means the entry will apply buffs to either faction)
+# FactionID may be set to 0 for the entry to apply buffs to bots of either faction
 # The default entries create a cross-faction list of level 80 buffs for each implemented pve spec from the "Premade Specs" section
 # The default entries may be deleted or modified, and new custom entries may be added
 
@@ -2024,11 +2071,11 @@ AiPlayerbot.AllowedLogFiles = ""
 ####################################################################################################
 # A list of gameObject GUID's that are not allowed for bots to interact with.
 #
-AiPlayerbot.DisallowedGameObjects = 176213,17155,2656,74448,19020,3719,3658,3705,3706,105579,75293,2857,179490,141596,160836,160845,179516,176224,181085,176112,128308,128403,165739,165738,175245,175970,176325,176327,123329
+AiPlayerbot.DisallowedGameObjects = 176213,17155,2656,74448,19020,3719,3658,3705,3706,105579,75293,2857,179490,141596,160836,160845,179516,176224,181085,176112,128308,128403,165739,165738,175245,175970,176325,176327,123329,2560
 #
 # List of GUID's:
 # QuestItems:
-# 176213 = Blood of Heroes, 17155 = Defias Gunpowder, 2656 = Waterlogged Envelope, 123329 = Baelogs Chest
+# 176213 = Blood of Heroes, 17155 = Defias Gunpowder, 2656 = Waterlogged Envelope, 123329 = Baelogs Chest, 2560 = Half-Buried Bottle
 # Chests:
 # Large Solid Chest = 74448, Box of Assorted Parts = 19020, Food Crate = 3719, Water Barrel = 3658, Barrel of Milk = 3705, Barrel of sweet Nectar = 3706, Tattered Chest = 105579, Large bettered Chest = 75293, Solid Chest = 2857, Battered Foodlocker = 179490, Witch Doctor's Chest = 141596, Relic Coffer = 160836, Dark Coffer = 160845, Fengus's Chest = 179516, Supply Crate = 176224/181085, Malor's Strongbox = 176112
 # Other:

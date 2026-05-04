@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2016+ AzerothCore <www.azerothcore.org>, released under GNU GPL v2 license, you may redistribute it
- * and/or modify it under version 2 of the License, or (at your option), any later version.
+ * Copyright (C) 2016+ AzerothCore <www.azerothcore.org>, released under GNU AGPL v3 license, you may redistribute it
+ * and/or modify it under version 3 of the License, or (at your option), any later version.
  */
 
 #include "UnequipAction.h"
@@ -8,6 +8,8 @@
 #include "Event.h"
 #include "ItemCountValue.h"
 #include "Playerbots.h"
+#include "WorldSession.h"
+#include "ItemPackets.h"
 
 std::vector<std::string> split(std::string const s, char delim);
 
@@ -70,7 +72,9 @@ void UnequipAction::UnequipItem(Item* item)
 
     WorldPacket packet(CMSG_AUTOSTORE_BAG_ITEM, 3);
     packet << bagIndex << slot << dstBag;
-    bot->GetSession()->HandleAutoStoreBagItemOpcode(packet);
+    WorldPackets::Item::AutoStoreBagItem nicePacket(std::move(packet));
+    nicePacket.Read();
+    bot->GetSession()->HandleAutoStoreBagItemOpcode(nicePacket);
 
     std::ostringstream out;
     out << chat->FormatItem(item->GetTemplate()) << " unequipped";
