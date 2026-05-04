@@ -26,27 +26,10 @@ bool SetHomeAction::Execute(Event /*event*/)
     if (Unit* unit = botAI->GetUnit(selection))
         if (unit->HasNpcFlag(UNIT_NPC_FLAG_INNKEEPER))
         {
-<<<<<<< HEAD:src/strategy/actions/SetHomeAction.cpp
-            if (isRpgAction)
-            {
-                Creature* creature = botAI->GetCreature(selection);
-                bot->GetSession()->SendBindPoint(creature);
-                botAI->TellMaster("这个旅馆是我的新家");
-                return true;
-            }
-            else
-            {
-                Creature* creature = botAI->GetCreature(selection);
-                bot->GetSession()->SendBindPoint(creature);
-                botAI->TellMaster("这个旅馆是我的新家");
-                return true;
-            }
-=======
             Creature* creature = botAI->GetCreature(selection);
             bot->GetSession()->SendBindPoint(creature);
             botAI->TellMaster("This inn is my new home");
             return true;
->>>>>>> upstream/master:src/Ai/Base/Actions/SetHomeAction.cpp
         }
 
     GuidVector npcs = AI_VALUE(GuidVector, "nearest npcs");
