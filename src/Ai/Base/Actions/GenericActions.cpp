@@ -219,7 +219,7 @@ bool SetPetStanceAction::Execute(Event /*event*/)
     }
 
     // If debug is enabled in config, inform the master of the new stance
-    if (sPlayerbotAIConfig->petChatCommandDebug == 1)
+    if (sPlayerbotAIConfig.petChatCommandDebug == 1)
         botAI->TellMaster("宠物姿态设置为 " + stanceText + " （应用于所有宠物/守护者）。");
 
     return true;
