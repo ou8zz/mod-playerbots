@@ -1055,9 +1055,6 @@ void PlayerbotAI::HandleCommand(uint32 type, std::string const text, Player* fro
         if (fromPlayer != master)
         {
             if (type == CHAT_MSG_WHISPER)
-<<<<<<< HEAD:src/PlayerbotAI.cpp
-                TellMaster("我正在登出!");
-=======
             {
                 std::string message = PlayerbotTextMgr::instance().GetBotTextOrDefault(
                     "bot_not_your_master", "You are not my master!", {});
@@ -1065,7 +1062,6 @@ void PlayerbotAI::HandleCommand(uint32 type, std::string const text, Player* fro
             }
             return;
         }
->>>>>>> upstream/master:src/Bot/PlayerbotAI.cpp
 
         PlayerbotMgr* masterBotMgr = GET_PLAYERBOT_MGR(master);
         if (!masterBotMgr)
@@ -1092,15 +1088,8 @@ void PlayerbotAI::HandleCommand(uint32 type, std::string const text, Player* fro
     }
     else if (filtered == "logout cancel")
     {
-<<<<<<< HEAD:src/PlayerbotAI.cpp
-        if (bot->GetSession()->isLogingOut())
-        {
-            if (type == CHAT_MSG_WHISPER)
-                TellMaster("登出已取消!");
-=======
         if (!bot->GetSession()->isLogingOut())
             return;
->>>>>>> upstream/master:src/Bot/PlayerbotAI.cpp
 
         if (type == CHAT_MSG_WHISPER)
         {

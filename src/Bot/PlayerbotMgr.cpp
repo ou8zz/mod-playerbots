@@ -392,55 +392,12 @@ void PlayerbotHolder::LogoutPlayerBot(ObjectGuid guid)
 */
         // Instant logout (the only option right now)
         {
-<<<<<<< HEAD:src/PlayerbotMgr.cpp
-            target = botAI->GetAiObjectContext()->GetValue<TravelTarget*>("travel target")->Get();
-        }
-
-        // Peiru: Allow bots to always instant logout to see if this resolves logout crashes
-        logout = true;
-
-        // if no instant logout, request normal logout
-        if (!logout)
-        {
-            if (bot->GetSession()->isLogingOut())
-                return;
-            else if (bot)
-            {
-                botAI->TellMaster("我正在登出!");
-                WorldPackets::Character::LogoutRequest data = WorldPacket(CMSG_LOGOUT_REQUEST);
-                botWorldSessionPtr->HandleLogoutRequestOpcode(data);
-                if (!bot)
-                {
-                    RemoveFromPlayerbotsMap(guid);
-                    delete botWorldSessionPtr;
-                    if (target)
-                        delete target;
-                }
-                return;
-            }
-            else
-            {
-                RemoveFromPlayerbotsMap(guid);     // deletes bot player ptr inside this WorldSession PlayerBotMap
-                delete botWorldSessionPtr;  // finally delete the bot's WorldSession
-                if (target)
-                    delete target;
-            }
-            return;
-        }  // if instant logout possible, do it
-        else if (bot && (logout || !botWorldSessionPtr->isLogingOut()))
-        {
-            botAI->TellMaster("再见!");
-            RemoveFromPlayerbotsMap(guid);                  // deletes bot player ptr inside this WorldSession PlayerBotMap
-            botWorldSessionPtr->LogoutPlayer(true);  // this will delete the bot Player object and PlayerbotAI object
-            delete botWorldSessionPtr;               // finally delete the bot's WorldSession
-=======
             std::string message = PlayerbotTextMgr::instance().GetBotTextOrDefault(
                 "goodbye", "Goodbye!", {});
             botAI->TellMaster(message);
             RemoveFromPlayerbotsMap(guid);              // deletes bot player ptr inside this WorldSession PlayerBotMap
             botWorldSessionPtr->LogoutPlayer(true);     // this will delete the bot Player object and PlayerbotAI object
             delete botWorldSessionPtr;                  // finally delete the bot's WorldSession
->>>>>>> upstream/master:src/Bot/PlayerbotMgr.cpp
         }
     }
 }
