@@ -244,17 +244,11 @@ bool UseItemAction::UseItem(Item* item, ObjectGuid goGuid, Item* itemTarget, Uni
         {
             packet << unitTarget->GetGUID();
             targetSelected = true;
-<<<<<<< HEAD:src/strategy/actions/UseItemAction.cpp
-            // If the target is bot or is an enemy, say "on self"
-            if (unitTarget == bot || (unitTarget->IsHostileTo(bot)))
-                out << " 对自己";
-=======
 
             if (unitTarget == bot || !unitTarget->IsInWorld() || unitTarget->IsDuringRemoveFromWorld())
-                out << " on self";
+                out << " 对自己";
             else if (unitTarget->IsHostileTo(bot))
-                out << " on self";
->>>>>>> upstream/master:src/Ai/Base/Actions/UseItemAction.cpp
+                out << " 对自己";
             else
                 out << " 对 " << unitTarget->GetName();
         }
