@@ -5,10 +5,11 @@ on:
       - opened
       - reopened
       - synchronize
-    paths:
-      - src/**
-      - "!README.md"
-      - "!docs/**"
+      - ready_for_review
+
+concurrency:
+  group: "codestyle-cppcheck-${{ github.event.pull_request.number }}"
+  cancel-in-progress: true
 
 jobs:
   triage:
@@ -17,13 +18,27 @@ jobs:
     if: github.event.pull_request.draft == false
     steps:
       - uses: actions/checkout@v4
+      
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            cpp:
+              - 'src/**'
+              - '!README.md'
+              - '!docs/**'
+
       - name: Setup python
+        if: steps.filter.outputs.cpp == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
       - name: AzerothCore codestyle
+        if: steps.filter.outputs.cpp == 'true'
         run: python ./apps/codestyle/codestyle-cpp.py
+        
       - name: C++ Advanced
+        if: steps.filter.outputs.cpp == 'true'
         run: |
           sudo apt update -y
           sudo apt install -y cppcheck
