@@ -213,13 +213,7 @@ bool BuyAction::Execute(Event event)
         }
     }
 
-    if (!vendored)
-    {
-        botAI->TellError("附近没有商人");
-        return false;
-    }
-
-    return true;
+    return vendored;
 }
 
 bool BuyAction::BuyItem(VendorItemData const* tItems, ObjectGuid vendorguid, ItemTemplate const* proto)

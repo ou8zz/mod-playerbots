@@ -8,64 +8,65 @@
 # 关于控制机器人和设置其策略的命令信息可以在wiki上找到 https://github.com/liyunfan1223/mod-playerbots/wiki/Playerbot-Commands。
 
 ####################################################################################################
-# 章节索引
-#   通用设置
-#    PLAYERBOTS 设置
-#        通用
-#        召唤选项
-#        坐骑
-#        装备
-#        拾取
-#        计时器
-#        距离
-#        阈值
-#        任务
-#        战斗
-#        圣骑士增益策略
-#        作弊
-#        法术
-#        飞行路线
-#    随机机器人特定设置
-#        通用
-#        等级
-#        装备
-#        任务
-#        活动
-#        法术
-#        策略
-#        RPG 策略
-#        传送
-#        战场 & 竞技场 & PvP
-#        间隔
-#    预设配置
-#        信息
-#        战士
-#        圣骑士
-#        猎人
-#        潜行者
-#        牧师
-#        死亡骑士
-#        萨满祭司
-#        法师
-#        术士
-#        德鲁伊
-#    随机机器人默认天赋配置
-#        战士
-#        圣骑士
-#        猎人
-#        潜行者
-#        牧师
-#        死亡骑士
-#        萨满祭司
-#        法师
-#        术士
-#        德鲁伊
-#    PLAYERBOTS 系统设置
-#        数据库 & 连接
-#        调试
-#        聊天设置
-#        日志
-#    已弃用 (临时)
+# SECTION INDEX
+#   GENERAL SETTINGS
+#    PLAYERBOTS SETTINGS
+#        GENERAL
+#        SUMMON OPTIONS
+#        MOUNT
+#        GEAR
+#        LOOTING
+#        TIMERS
+#        DISTANCES
+#        THRESHOLDS
+#        QUESTS
+#        COMBAT
+#        GREATER BUFFS STRATEGIES
+#        CHEATS
+#        SPELLS
+#        FLIGHTPATH
+#        PROFESSIONS
+#    RANDOMBOT-SPECIFIC SETTINGS
+#        GENERAL
+#        LEVELS
+#        GEAR
+#        QUESTS
+#        ACTIVITIES
+#        SPELLS
+#        STRATEGIES
+#        RPG STRATEGY
+#        TELEPORTS
+#        BATTLEGROUND & ARENA & PVP
+#        RANDOM BOT TIMING AND BEHAVIOR
+#    PREMADE SPECS
+#        INFORMATION
+#        WARRIOR
+#        PALADIN
+#        HUNTER
+#        ROGUE
+#        PRIEST
+#        DEATH KNIGHT
+#        SHAMAN
+#        MAGE
+#        WARLOCK
+#        DRUID
+#    RANDOMBOT DEFAULT TALENT SPECS
+#        WARRIOR
+#        PALADIN
+#        HUNTER
+#        ROGUE
+#        PRIEST
+#        DEATH KNIGHT
+#        SHAMAN
+#        MAGE
+#        WARLOCK
+#        DRUID
+#    PLAYERBOTS SYSTEM SETTINGS
+#        DATABASE & CONNECTIONS
+#        DEBUG
+#        CHAT SETTINGS
+#        LOGS
+#    DEPRECIATED (TEMPORARY)
 #
 #
 #
