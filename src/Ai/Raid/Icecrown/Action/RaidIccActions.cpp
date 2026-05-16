@@ -6697,7 +6697,7 @@ bool IccSindragosaFrostBombAction::Execute(Event /*event*/)
         for (size_t i = 0; i < myTombs.size(); ++i)
         {
             Unit* tomb = myTombs[i];
-            if (tomb->IsAlive() && tomb->HealthAbovePct(45))
+            if (tomb->IsAlive() && tomb->HealthAbovePct(95))
             {
                 tombToMark = tomb;
                 break;
